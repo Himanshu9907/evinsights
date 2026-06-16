@@ -68,6 +68,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const metadata = {
+  metadataBase: new URL("https://evinsightshub.in"),
+
+  title: {
+    default: "EV Insight Hub",
+    template: "%s | EV Insight Hub",
+  },
+
+  description:
+    "Latest EV news, reviews, comparisons and buying guides.",
+
+  openGraph: {
+    title: "EV Insight Hub",
+    description: "Latest EV News & Reviews",
+    url: "https://evinsightshub.in",
+    siteName: "EV Insight Hub",
+    type: "website",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -81,3 +101,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+
