@@ -3,6 +3,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { posts } from "@/data/posts";
 import Link from "next/link";
+import { comparisons } from "@/data/comparisons";
+
+const featuredReviews = posts
+  .filter((post) => post.category === "Reviews")
+  .slice(0, 3);
 
 export default function Home() {
   return (
@@ -23,12 +28,6 @@ export default function Home() {
               <div className="inline-block border border-green-500 text-green-400 px-6 py-3 rounded-full">
                 Independent. Data-driven. Reader-first.
               </div>
-
-              {/* <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mt-8">
-            The electric future,
-            <span className="text-green-400"> decoded.</span>
-          </h1> */}
-
               <h1 className="text-6xl lg:text-8xl font-extrabold leading-[0.95] mt-8">
                 The electric
                 <br />
@@ -43,31 +42,16 @@ export default function Home() {
 
               <div className="flex gap-5 mt-10">
                 <button className="bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-2xl font-semibold transition-all">
-                  Read the latest →
+                  Latest News
                 </button>
 
                 <button className="border border-gray-700 hover:border-green-500 px-8 py-4 rounded-2xl transition-all">
-                  Browse reviews
+                  Compare EVs
                 </button>
-                {/* <button className="bg-green-500 text-black px-8 py-4 rounded-xl font-semibold">
-              Read Latest →
-            </button>
-
-            <button className="border border-gray-700 px-8 py-4 rounded-xl">
-              Browse Reviews
-            </button> */}
               </div>
             </div>
 
             {/* Right */}
-            {/* <div>
-          <img
-            src="/ev-car.jpg"
-            alt="EV Car"
-            className="w-full h-[500px] object-cover rounded-3xl border border-green-900"
-          />
-        </div> */}
-
             <div className="relative">
               <div className="absolute -inset-4 bg-green-500/20 blur-3xl rounded-full"></div>
 
@@ -80,203 +64,46 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Stats */}
-        {/* <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-3 border-t border-gray-800 pt-10">
-            <div>
-              <h3 className="text-4xl font-bold text-green-400">150k+</h3>
-              <p className="text-gray-500">Monthly Readers</p>
-            </div>
-
-            <div>
-              <h3 className="text-4xl font-bold text-green-400">320+</h3>
-              <p className="text-gray-500">Articles</p>
-            </div>
-
-            <div>
-              <h3 className="text-4xl font-bold text-green-400">40+</h3>
-              <p className="text-gray-500">EV Reviews</p>
-            </div>
-          </div>
-        </div> */}
-
-        <section className="max-w-7xl mx-auto px-6 py-24">
-
-  <div className="text-center mb-16">
-    <h2 className="text-4xl md:text-5xl font-bold">
-      Why Choose
-      <span className="text-green-400"> EV Insights Hub</span>
-    </h2>
-
-    <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-      Your trusted source for electric vehicle news,
-      reviews, comparisons and buying guides.
-    </p>
-  </div>
-
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-    {/* Card 1 */}
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-      <div className="text-4xl mb-4">📰</div>
-
-      <h3 className="text-xl font-bold mb-3">
-        Latest EV News
-      </h3>
-
-      <p className="text-gray-400">
-        Stay updated with the latest electric vehicle launches,
-        battery technology and industry developments.
-      </p>
-    </div>
-
-    {/* Card 2 */}
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-      <div className="text-4xl mb-4">🚗</div>
-
-      <h3 className="text-xl font-bold mb-3">
-        Honest Reviews
-      </h3>
-
-      <p className="text-gray-400">
-        Detailed reviews covering range, performance,
-        charging speed and ownership experience.
-      </p>
-    </div>
-
-    {/* Card 3 */}
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-      <div className="text-4xl mb-4">⚖️</div>
-
-      <h3 className="text-xl font-bold mb-3">
-        EV Comparisons
-      </h3>
-
-      <p className="text-gray-400">
-        Compare specifications, pricing, battery,
-        charging and features side-by-side.
-      </p>
-    </div>
-
-    {/* Card 4 */}
-    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-      <div className="text-4xl mb-4">🔋</div>
-
-      <h3 className="text-xl font-bold mb-3">
-        Buying Guides
-      </h3>
-
-      <p className="text-gray-400">
-        Learn about charging, batteries,
-        incentives and EV ownership before buying.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-        {/* Featured Articles */}
+        {/* Latest EV News */}
         <section className="max-w-7xl mx-auto px-6 py-24">
           <div className="flex items-center justify-between mb-12">
             <h2 className="text-4xl font-bold">
-              Featured <span className="text-green-400">Articles</span>
+              Latest <span className="text-green-400">EV News</span>
             </h2>
-
-            <button className="text-green-400 hover:text-green-300">
-              View All →
-            </button>
+            <Link href="/blog" className="text-green-400 hover:text-green-300">
+              View All Reviews →
+            </Link>
           </div>
-
-          {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"> */}
-          {/* Card 1 */}
-          {/* <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition">
-      <img
-        src="/article1.jpg"
-        alt="EV News"
-        className="w-full h-56 object-cover"
-      />
-
-      <div className="p-6">
-        <span className="text-green-400 text-sm">EV NEWS</span>
-
-        <h3 className="text-xl font-bold mt-3">
-          Top Electric Cars Coming to India in 2026
-        </h3>
-
-        <p className="text-gray-400 mt-3">
-          Explore the most anticipated EV launches expected next year.
-        </p>
-      </div>
-    </div> */}
-
-          {/* Card 2 */}
-          {/* <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition">
-      <img
-        src="/article2.jpg"
-        alt="EV Review"
-        className="w-full h-56 object-cover"
-      />
-
-      <div className="p-6">
-        <span className="text-green-400 text-sm">REVIEW</span>
-
-        <h3 className="text-xl font-bold mt-3">
-          Tata Curvv EV Full Review
-        </h3>
-
-        <p className="text-gray-400 mt-3">
-          Range, battery performance and real-world driving experience.
-        </p>
-      </div>
-    </div> */}
-
-          {/* Card 3 */}
-          {/* <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition">
-      <img
-        src="/article3.jpg"
-        alt="Charging"
-        className="w-full h-56 object-cover"
-      />
-
-      <div className="p-6">
-        <span className="text-green-400 text-sm">CHARGING</span>
-
-        <h3 className="text-xl font-bold mt-3">
-          Complete Home Charging Guide
-        </h3>
-
-        <p className="text-gray-400 mt-3">
-          Everything you need to know before installing an EV charger.
-        </p>
-      </div>
-    </div> */}
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post) => (
-              // <Link key={post.slug} href={`/blog/${post.slug}`}>
+            {posts.slice(0, 3).map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="block"
               >
-                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition">
-                  {/* <img
-                      src={post.image}
-                      alt={post.title}
-                      className="w-full h-56 object-cover"
-                    /> */}
-                  <div className="w-full bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition"></div>
+                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition hover:-translate-y-2 duration-300">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-56 object-cover"
+                    className="w-full h-52 object-cover"
                   />
 
                   <div className="p-6">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="text-green-400 text-sm">
+                        {post.category}
+                      </span>
+
+                      <span className="text-gray-500 text-sm">{post.date}</span>
+                    </div>
+
                     <h3 className="text-xl font-bold">{post.title}</h3>
 
                     <p className="text-gray-400 mt-3">{post.excerpt}</p>
+
+                    <div className="mt-5 text-green-400 font-medium">
+                      Read More →
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -284,48 +111,188 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Popular Categories */}
+        {/* Feature Reviews */}
         <section className="max-w-7xl mx-auto px-6 py-24">
-          <div className="text-center mb-14">
+          <div className="flex items-center justify-between mb-12">
             <h2 className="text-4xl font-bold">
-              Popular <span className="text-green-400">Categories</span>
+              Featured <span className="text-green-400">Reviews</span>
             </h2>
 
-            <p className="text-gray-400 mt-4">
-              Explore electric vehicles, charging, batteries and industry news.
+            <Link href="/blog" className="text-green-400 hover:text-green-300">
+              View All Reviews →
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredReviews.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="block"
+              >
+                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-56 object-cover"
+                  />
+
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">
+                        Review
+                      </span>
+
+                      <span className="text-gray-500 text-sm">
+                        {post.readTime}
+                      </span>
+                    </div>
+
+                    <h3 className="text-2xl font-bold line-clamp-2">
+                      {post.title}
+                    </h3>
+
+                    <p className="text-gray-400 mt-4 line-clamp-3 flex-grow">
+                      {post.excerpt}
+                    </p>
+
+                    <div className="mt-6 pt-4 border-t border-zinc-800 flex justify-between items-center">
+                      <span className="text-gray-500 text-sm">{post.date}</span>
+
+                      <span className="text-green-400 font-semibold">
+                        Read Review →
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Popular Comparisons */}
+        <section className="max-w-7xl mx-auto px-6 py-24">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-4xl font-bold">
+              Popular <span className="text-green-400">Comparisons</span>
+            </h2>
+
+            <Link
+              href="/comparison"
+              className="text-green-400 hover:text-green-300"
+            >
+              View All →
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {comparisons.slice(0, 3).map((comparison) => (
+              <Link
+                key={comparison.slug}
+                href={`/comparison/${comparison.slug}`}
+                className="block"
+              >
+                <div className="bg-zinc-900 rounded-3xl border border-zinc-800 overflow-hidden hover:border-green-500 hover:-translate-y-2 transition-all duration-300 h-full">
+                  <div className="grid grid-cols-2">
+                    <img
+                      src={comparison.image1}
+                      alt={comparison.car1}
+                      className="w-full h-48 object-cover"
+                    />
+
+                    <img
+                      src={comparison.image2}
+                      alt={comparison.car2}
+                      className="w-full h-48 object-cover"
+                    />
+                  </div>
+
+                  <div className="p-6">
+                    <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">
+                      Comparison
+                    </span>
+
+                    <h3 className="text-xl font-bold mt-4">
+                      {comparison.car1}
+                      <span className="text-green-400"> VS </span>
+                      {comparison.car2}
+                    </h3>
+
+                    <p className="text-gray-400 mt-3">
+                      Compare specifications, range, battery, charging speed,
+                      performance and pricing.
+                    </p>
+
+                    <div className="mt-6 text-green-400 font-semibold">
+                      Compare Now →
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Why Choose Us Section */}
+        <section className="max-w-7xl mx-auto px-6 py-24">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Why Choose
+              <span className="text-green-400"> EV Insights Hub</span>
+            </h2>
+
+            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+              Your trusted source for electric vehicle news, reviews,
+              comparisons and buying guides.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition cursor-pointer">
-              <div className="text-5xl mb-4">🚗</div>
-              <h3 className="text-2xl font-bold">Electric Cars</h3>
-              <p className="text-gray-400 mt-3">
-                Latest EV cars, reviews and comparisons.
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Card 1 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+              <div className="text-4xl mb-4">📰</div>
+
+              <h3 className="text-xl font-bold mb-3">Latest EV News</h3>
+
+              <p className="text-gray-400">
+                Stay updated with the latest electric vehicle launches, battery
+                technology and industry developments.
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition cursor-pointer">
-              <div className="text-5xl mb-4">🛵</div>
-              <h3 className="text-2xl font-bold">EV Scooters</h3>
-              <p className="text-gray-400 mt-3">
-                Best electric scooters in India.
+            {/* Card 2 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+              <div className="text-4xl mb-4">🚗</div>
+
+              <h3 className="text-xl font-bold mb-3">Honest Reviews</h3>
+
+              <p className="text-gray-400">
+                Detailed reviews covering range, performance, charging speed and
+                ownership experience.
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition cursor-pointer">
-              <div className="text-5xl mb-4">🔋</div>
-              <h3 className="text-2xl font-bold">Battery Tech</h3>
-              <p className="text-gray-400 mt-3">
-                Battery innovations and future technology.
+            {/* Card 3 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+              <div className="text-4xl mb-4">⚖️</div>
+
+              <h3 className="text-xl font-bold mb-3">EV Comparisons</h3>
+
+              <p className="text-gray-400">
+                Compare specifications, pricing, battery, charging and features
+                side-by-side.
               </p>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition cursor-pointer">
-              <div className="text-5xl mb-4">⚡</div>
-              <h3 className="text-2xl font-bold">Charging</h3>
-              <p className="text-gray-400 mt-3">
-                Home charging and fast charging guides.
+            {/* Card 4 */}
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+              <div className="text-4xl mb-4">🔋</div>
+
+              <h3 className="text-xl font-bold mb-3">Buying Guides</h3>
+
+              <p className="text-gray-400">
+                Learn about charging, batteries, incentives and EV ownership
+                before buying.
               </p>
             </div>
           </div>
@@ -345,51 +312,6 @@ export default function Home() {
             <button className="bg-green-500 text-black px-8 rounded-xl">
               Subscribe
             </button>
-          </div>
-        </section>
-
-        {/* Latest EV News */}
-        <section className="max-w-7xl mx-auto px-6 py-24">
-          <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
-              Latest <span className="text-green-400">EV News</span>
-            </h2>
-
-            <button className="text-green-400 hover:text-green-300">
-              View All News →
-            </button>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div
-                key={item}
-                className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition"
-              >
-                <img
-                  src={`/news${item}.jpg`}
-                  alt="EV News"
-                  className="w-full h-52 object-cover"
-                />
-
-                <div className="p-6">
-                  <span className="text-green-400 text-sm">
-                    {new Date().toLocaleDateString()}
-                  </span>
-
-                  <h3 className="text-xl font-bold mt-3">
-                    EV Industry News Headline {item}
-                  </h3>
-
-                  <p className="text-gray-400 mt-3">
-                    Latest updates from India's growing electric vehicle
-                    ecosystem.
-                  </p>
-
-                  <button className="mt-5 text-green-400">Read More →</button>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
       </main>
