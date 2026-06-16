@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://evinsightshub.vercel.app/sitemap.xml",
+    sitemap: "https://evinsightshub.in/sitemap.xml",
   };
 }
