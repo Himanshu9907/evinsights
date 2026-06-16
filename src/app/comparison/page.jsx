@@ -10,7 +10,7 @@ export default function ComparisonPage() {
     <main className="bg-black text-white min-h-screen pt-20">
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-zinc-800">
+      {/* <section className="relative overflow-hidden border-b border-zinc-800">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.15),transparent_60%)]"></div>
 
         <div className="max-w-7xl mx-auto px-6 py-24 relative">
@@ -28,7 +28,24 @@ export default function ComparisonPage() {
             features and pricing of India's top electric vehicles.
           </p>
         </div>
-      </section>
+      </section> */}
+
+      <div className="max-w-7xl mx-auto px-6 py-24 relative text-center">
+
+  <span className="inline-block px-5 py-2 rounded-full border border-green-500 text-green-400">
+    EV Comparison
+  </span>
+
+  <h1 className="text-5xl md:text-6xl font-bold mt-8">
+  EV <span className="text-green-400">Comparisons</span>
+</h1>
+
+  <p className="max-w-3xl mx-auto text-gray-400 text-xl mt-8">
+    Compare range, battery, performance,
+    pricing and features side by side.
+  </p>
+
+</div>
 
       {/* Stats */}
       <section className="max-w-7xl mx-auto px-6 py-12">

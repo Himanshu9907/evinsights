@@ -81,7 +81,7 @@ export default function Home() {
         </section>
 
         {/* Stats */}
-        <div className="max-w-7xl mx-auto px-6">
+        {/* <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-3 border-t border-gray-800 pt-10">
             <div>
               <h3 className="text-4xl font-bold text-green-400">150k+</h3>
@@ -98,7 +98,83 @@ export default function Home() {
               <p className="text-gray-500">EV Reviews</p>
             </div>
           </div>
-        </div>
+        </div> */}
+
+        <section className="max-w-7xl mx-auto px-6 py-24">
+
+  <div className="text-center mb-16">
+    <h2 className="text-4xl md:text-5xl font-bold">
+      Why Choose
+      <span className="text-green-400"> EV Insights Hub</span>
+    </h2>
+
+    <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
+      Your trusted source for electric vehicle news,
+      reviews, comparisons and buying guides.
+    </p>
+  </div>
+
+  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+    {/* Card 1 */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+      <div className="text-4xl mb-4">📰</div>
+
+      <h3 className="text-xl font-bold mb-3">
+        Latest EV News
+      </h3>
+
+      <p className="text-gray-400">
+        Stay updated with the latest electric vehicle launches,
+        battery technology and industry developments.
+      </p>
+    </div>
+
+    {/* Card 2 */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+      <div className="text-4xl mb-4">🚗</div>
+
+      <h3 className="text-xl font-bold mb-3">
+        Honest Reviews
+      </h3>
+
+      <p className="text-gray-400">
+        Detailed reviews covering range, performance,
+        charging speed and ownership experience.
+      </p>
+    </div>
+
+    {/* Card 3 */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+      <div className="text-4xl mb-4">⚖️</div>
+
+      <h3 className="text-xl font-bold mb-3">
+        EV Comparisons
+      </h3>
+
+      <p className="text-gray-400">
+        Compare specifications, pricing, battery,
+        charging and features side-by-side.
+      </p>
+    </div>
+
+    {/* Card 4 */}
+    <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
+      <div className="text-4xl mb-4">🔋</div>
+
+      <h3 className="text-xl font-bold mb-3">
+        Buying Guides
+      </h3>
+
+      <p className="text-gray-400">
+        Learn about charging, batteries,
+        incentives and EV ownership before buying.
+      </p>
+    </div>
+
+  </div>
+
+</section>
 
         {/* Featured Articles */}
         <section className="max-w-7xl mx-auto px-6 py-24">

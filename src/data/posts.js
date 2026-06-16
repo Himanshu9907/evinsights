@@ -90,4 +90,59 @@ Top EVs:
 These vehicles provide great range and value.
     `,
   },
+
+  {
+  slug: "mahindra-be6-review",
+  title: "Mahindra BE 6 Review",
+  excerpt:
+    "Complete review of Mahindra BE 6 including range, battery, performance and features.",
+  image: "/news3.jpg",
+  category: "Reviews",
+  readTime: "6 min read",
+  date: "2026-06-15",
+
+  content: `
+Mahindra BE 6 is one of India's most advanced electric SUVs.
+
+Key Highlights:
+
+• Range: Up to 682 KM
+• Battery Pack: 79 kWh
+• Fast Charging: 175 kW DC
+• Power Output: 282 PS
+
+The vehicle features a futuristic design, premium interior, dual digital displays and advanced ADAS safety technology.
+
+Its long range and powerful performance make it a strong competitor in the premium EV segment.
+  `,
+},
+
+{
+  slug: "ev-charging-guide-india",
+  title: "EV Charging Guide in India",
+  excerpt:
+    "Everything you need to know about EV charging stations, charging speed and costs.",
+  image: "/news4.jpg",
+  category: "Charging",
+  readTime: "7 min read",
+  date: "2026-06-16",
+
+  content: `
+Electric vehicle charging infrastructure is expanding rapidly across India.
+
+Types of EV Charging:
+
+• Home Charging
+• AC Public Charging
+• DC Fast Charging
+
+Benefits of Fast Charging:
+
+• Reduced charging time
+• Convenient for long trips
+• Better highway travel experience
+
+Before buying an EV, it is important to understand charging networks, charging costs and battery care practices.
+  `,
+},
 ];

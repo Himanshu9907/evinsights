@@ -1,68 +1,3 @@
-// import Link from "next/link";
-
-// export default function Navbar() {
-//   return (
-//     // <nav className="sticky top-0 z-50 border-b border-green-900/20 bg-black/70 backdrop-blur-x1">
-//     // <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800">
-//     // <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-zinc-800">
-//     <nav className="fixed top-0 left-0 w-full z-50 bg-black/90 backdrop-blur-md border-b border-zinc-800">
-//       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-//         {/* Logo */}
-//         <Link href="/" className="flex items-center gap-3">
-//           <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-black font-bold">
-//             ⚡
-//           </div>
-
-//           <h1 className="text-2xl font-bold text-white">
-//             EV <span className="text-green-400">Insights</span>
-//           </h1>
-//         </Link>
-
-//         {/* Menu */}
-//         <ul className="hidden lg:flex items-center gap-8 text-gray-300 font-medium">
-//           <li>
-//             <Link href="/" className="hover:text-green-400 transition">
-//               Home
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link href="/blog" className="hover:text-green-400 transition">
-//               Blog
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link
-//               href="/comparisons"
-//               className="hover:text-green-400 transition"
-//             >
-//               Comparisons
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link href="/about" className="hover:text-green-400 transition">
-//               About
-//             </Link>
-//           </li>
-
-//           <li>
-//             <Link href="/contact" className="hover:text-green-400 transition">
-//               Contact
-//             </Link>
-//           </li>
-//         </ul>
-
-//         {/* Subscribe Button */}
-//         <button className="bg-green-500 hover:bg-green-400 text-black font-semibold px-6 py-3 rounded-xl transition">
-//           Subscribe
-//         </button>
-//       </div>
-//     </nav>
-//   );
-// }
-
 "use client";
 
 import Link from "next/link";
@@ -79,7 +14,7 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/blog", label: "Blog" },
+    { href: "/blog", label: "News & Reviews" },
     { href: "/comparison", label: "Comparison" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
