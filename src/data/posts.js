@@ -56,6 +56,51 @@
 
 export const posts = [
   {
+    slug: "ev-vs-petrol",
+    title: "EV vs Petrol Car: Complete Cost Comparison in 2026",
+    category: "Buying Guide",
+    image: "/news5.jpg",
+    date: "June 17, 2026",
+    readTime: "8 min read",
+
+    excerpt:
+      "Compare EV and petrol car ownership costs, maintenance, charging expenses and long-term savings.",
+
+    content: `
+## Initial Purchase Cost
+
+The biggest advantage of petrol cars is their lower upfront cost.
+
+| Vehicle Type | Approximate Price |
+|-------------|------------------|
+| Petrol Hatchback | ₹6–8 Lakh |
+| Petrol SUV | ₹10–15 Lakh |
+| Electric Hatchback | ₹8–12 Lakh |
+| Electric SUV | ₹12–20 Lakh |
+
+## Running Cost Comparison
+
+Running cost is where electric vehicles have a major advantage.
+
+### Petrol Car
+
+- Average mileage: 15 km/litre
+- Petrol price: ₹100/litre
+- Cost per km: ₹6–7
+
+### Electric Vehicle
+
+- Electricity cost: ₹7–10 per unit
+- Average efficiency: 6–8 km per unit
+- Cost per km: ₹1–1.5
+
+## Final Verdict
+
+EVs generally become cheaper over long-term ownership.
+`
+  },
+
+  {
     slug: "tata-curvv-ev-review",
     title: "Tata Curvv EV Review",
     category: "Reviews",
@@ -92,16 +137,16 @@ These vehicles provide great range and value.
   },
 
   {
-  slug: "mahindra-be6-review",
-  title: "Mahindra BE 6 Review",
-  excerpt:
-    "Complete review of Mahindra BE 6 including range, battery, performance and features.",
-  image: "/news3.jpg",
-  category: "Reviews",
-  readTime: "6 min read",
-  date: "2026-06-15",
+    slug: "mahindra-be6-review",
+    title: "Mahindra BE 6 Review",
+    excerpt:
+      "Complete review of Mahindra BE 6 including range, battery, performance and features.",
+    image: "/news3.jpg",
+    category: "Reviews",
+    readTime: "6 min read",
+    date: "2026-06-15",
 
-  content: `
+    content: `
 Mahindra BE 6 is one of India's most advanced electric SUVs.
 
 Key Highlights:
@@ -115,19 +160,19 @@ The vehicle features a futuristic design, premium interior, dual digital display
 
 Its long range and powerful performance make it a strong competitor in the premium EV segment.
   `,
-},
+  },
 
-{
-  slug: "ev-charging-guide-india",
-  title: "EV Charging Guide in India",
-  excerpt:
-    "Everything you need to know about EV charging stations, charging speed and costs.",
-  image: "/news4.jpg",
-  category: "Charging",
-  readTime: "7 min read",
-  date: "2026-06-16",
+  {
+    slug: "ev-charging-guide-india",
+    title: "EV Charging Guide in India",
+    excerpt:
+      "Everything you need to know about EV charging stations, charging speed and costs.",
+    image: "/news4.jpg",
+    category: "Charging",
+    readTime: "7 min read",
+    date: "2026-06-16",
 
-  content: `
+    content: `
 Electric vehicle charging infrastructure is expanding rapidly across India.
 
 Types of EV Charging:
@@ -144,5 +189,5 @@ Benefits of Fast Charging:
 
 Before buying an EV, it is important to understand charging networks, charging costs and battery care practices.
   `,
-},
+  },
 ];

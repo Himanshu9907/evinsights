@@ -1,0 +1,62 @@
+|-- .gitignore
+|-- AGENTS.md
+|-- CLAUDE.md
+|-- eslint.config.mjs
+|-- jsconfig.json
+|-- next.config.mjs
+|-- package-lock.json
+|-- package.json
+|-- postcss.config.mjs
+|-- public
+    |-- article1.jpg
+    |-- article2.jpg
+    |-- article3.jpg
+    |-- be6.jpg
+    |-- curvv-ev.jpg
+    |-- ev-car.jpg
+    |-- file.svg
+    |-- globe.svg
+    |-- mg-zs-ev.jpg
+    |-- news1.jpg
+    |-- news2.jpg
+    |-- news3.jpg
+    |-- news4.jpg
+    |-- news5.jpg
+    |-- news6.jpg
+    |-- nexon-ev.jpg
+    |-- next.svg
+    |-- vercel.svg
+    |-- window.svg
+    |-- windsor-ev.jpg
+    |-- xev-9e.jpg
+|-- README.md
+|-- src
+    |-- app
+        |-- about
+            |-- page.jsx
+        |-- blog
+            |-- page.jsx
+            |-- [slug]
+                |-- page.jsx
+        |-- comparison
+            |-- page.jsx
+            |-- [slug]
+                |-- page.jsx
+        |-- components
+            |-- Footer.jsx
+            |-- Navbar.jsx
+            |-- SearchBar.jsx
+        |-- contact
+            |-- page.jsx
+        |-- favicon.ico
+        |-- globals.css
+        |-- layout.js
+        |-- page.js
+        |-- providers.jsx
+        |-- robots.js
+        |-- search
+            |-- page.jsx
+        |-- sitemap.js
+    |-- data
+        |-- comparisons.js
+        |-- posts.js

@@ -19,6 +19,43 @@ body {
   color: white;
 }
 
+.prose h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.prose h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.prose p {
+  color: #d4d4d8;
+  line-height: 1.9;
+}
+
+.prose li {
+  color: #d4d4d8;
+}
+
+.prose strong {
+  color: white;
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.prose table th,
+.prose table td {
+  border: 1px solid #27272a;
+  padding: 12px;
+}
+
 /* :root {
   --background: #ffffff;
   --foreground: #171717;
