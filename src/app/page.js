@@ -15,80 +15,91 @@ export default function Home() {
       <Navbar />
       <main className="bg-black text-white min-h-screen pt-18">
         {/* Hero Section */}
-        <section className="relative overflow-hidden min-h-[85vh]">
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-1/3 w-[700px] h-[700px] bg-green-500/10 rounded-full blur-[150px]" />
 
-            <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-green-500/10 rounded-full blur-[120px]" />
+        <section className="relative overflow-hidden min-h-screen flex items-center">
+          {/* Background Blur */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute top-10 md:top-20 left-1/2 -translate-x-1/2 lg:left-1/3 lg:translate-x-0 w-[350px] h-[350px] md:w-[700px] md:h-[700px] bg-green-500/10 rounded-full blur-[100px] md:blur-[150px]" />
+
+            <div className="absolute bottom-0 right-0 w-[250px] h-[250px] md:w-[500px] md:h-[500px] bg-green-500/10 rounded-full blur-[80px] md:blur-[120px]" />
           </div>
 
-          <div className="max-w-7xl mx-auto px-6 py-24 grid lg:grid-cols-2 gap-16 items-center relative">
+          <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 py-16 md:py-24 grid lg:grid-cols-2 gap-14 lg:gap-20 items-center relative">
             {/* Left */}
-            <div className="max-w-2xl">
-              <div className="inline-block border border-green-500 text-green-400 px-6 py-3 rounded-full">
+            <div className="max-w-2xl text-center lg:text-left">
+              <div className="inline-block border border-green-500 text-green-400 px-5 py-2.5 rounded-full text-sm md:text-base">
                 Independent. Data-driven. Reader-first.
               </div>
-              <h1 className="text-6xl lg:text-8xl font-extrabold leading-[0.95] mt-8">
+
+              <h1 className="mt-8 font-extrabold leading-[1] text-5xl sm:text-6xl lg:text-8xl">
                 The electric
                 <br />
                 future,
                 <span className="text-green-400"> decoded.</span>
               </h1>
 
-              <p className="text-gray-400 text-xl mt-6 max-w-xl">
-                In-depth EV reviews, breaking industry news, and charging guides
-                for EV enthusiasts.
+              <p className="text-gray-400 text-base sm:text-lg lg:text-xl mt-6 max-w-xl mx-auto lg:mx-0">
+                In-depth EV reviews, breaking industry news, detailed
+                comparisons and charging guides for every EV buyer.
               </p>
 
-              <div className="flex gap-5 mt-10">
-                <button className="bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-2xl font-semibold transition-all">
+              <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center lg:justify-start">
+                <Link
+                  href="/blog"
+                  className="bg-green-500 hover:bg-green-400 text-black px-8 py-4 rounded-2xl font-semibold transition text-center"
+                >
                   Latest News
-                </button>
+                </Link>
 
-                <button className="border border-gray-700 hover:border-green-500 px-8 py-4 rounded-2xl transition-all">
+                <Link
+                  href="/comparison"
+                  className="border border-zinc-700 hover:border-green-500 px-8 py-4 rounded-2xl transition text-center"
+                >
                   Compare EVs
-                </button>
+                </Link>
               </div>
             </div>
 
             {/* Right */}
-            <div className="relative">
+            <div className="relative order-first lg:order-last">
               <div className="absolute -inset-4 bg-green-500/20 blur-3xl rounded-full"></div>
 
               <img
                 src="/ev-car.jpg"
                 alt="EV Car"
-                className="relative w-full h-[550px] object-cover rounded-[32px] border border-green-900/50 shadow-[0_0_80px_rgba(34,197,94,0.25)]"
+                className="relative w-full h-[260px] sm:h-[380px] md:h-[450px] lg:h-[550px] object-cover rounded-[32px] border border-green-900/50 shadow-[0_0_80px_rgba(34,197,94,0.25)]"
               />
             </div>
           </div>
         </section>
 
         {/* Latest EV News */}
-        <section className="max-w-7xl mx-auto px-6 py-24">
+        {/* <section className="max-w-7xl mx-auto px-6 py-24"> */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
+            {/* <h2 className="text-4xl font-bold"> */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Latest <span className="text-green-400">EV News</span>
             </h2>
-            <Link href="/blog" className="text-green-400 hover:text-green-300">
+            <Link href="/blog" className="text-green-400 hover:text-green-300 whitespace-nowrap">
               View All Reviews →
             </Link>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.slice(0, 3).map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="block"
               >
-                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition hover:-translate-y-2 duration-300">
+                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 transition flex flex-col h-full">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-52 object-cover"
+                    className="w-full h-56 object-cover"
                   />
 
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-1">
                     <div className="flex justify-between items-center mb-3">
                       <span className="text-green-400 text-sm">
                         {post.category}
@@ -97,11 +108,11 @@ export default function Home() {
                       <span className="text-gray-500 text-sm">{post.date}</span>
                     </div>
 
-                    <h3 className="text-xl font-bold">{post.title}</h3>
+                    <h3 className="text-xl font-bold mt-3 line-clamp-2">{post.title}</h3>
 
-                    <p className="text-gray-400 mt-3">{post.excerpt}</p>
+                    <p className="text-gray-400 mt-3 line-clamp-3 flex-1">{post.excerpt}</p>
 
-                    <div className="mt-5 text-green-400 font-medium">
+                    <div className="mt-5 text-green-400 font-medium hover:text-green-300">
                       Read More →
                     </div>
                   </div>
