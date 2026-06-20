@@ -30,39 +30,6 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        {/* <div className="hidden md:flex items-center gap-8">
-          <Link href="/" className="hover:text-green-400 transition">
-            Home
-          </Link>
-
-          <Link
-  href="/"
-  className={`transition ${
-    pathname === "/"
-      ? "text-green-400 font-semibold"
-      : "hover:text-green-400"
-  }`}
->
-  Home
-</Link>
-
-          <Link href="/blog" className="hover:text-green-400 transition">
-            Blog
-          </Link>
-
-          <Link href="/comparison" className="hover:text-green-400 transition">
-            Comparison
-          </Link>
-
-          <Link href="/about" className="hover:text-green-400 transition">
-            About
-          </Link>
-
-          <Link href="/contact" className="hover:text-green-400 transition">
-            Contact
-          </Link>
-        </div> */}
-
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
@@ -107,7 +74,7 @@ export default function Navbar() {
             </Link>
 
             <Link href="/blog" onClick={() => setMenuOpen(false)}>
-              Blog
+              News & Reviews
             </Link>
 
             <Link href="/comparison" onClick={() => setMenuOpen(false)}>
