@@ -101,11 +101,37 @@ EVs generally become cheaper over long-term ownership.
   },
 
   {
+  slug: "tata-curvv-ev-review",
+
+  title: "Tata Curvv EV Review",
+
+  excerpt: "Complete review of Tata Curvv EV including range and features.",
+
+  category: "Reviews",
+
+  image: "/curvv-ev.jpg",
+
+  rating: "4.8",
+
+  price: "₹17.49 Lakh",
+
+  range: "585 km",
+
+  battery: "55 kWh",
+
+  readTime: "8 min read"
+},
+
+  {
     slug: "tata-curvv-ev-review",
     title: "Tata Curvv EV Review",
     category: "Reviews",
     excerpt: "Complete review of Tata Curvv EV including range and features.",
     image: "/news1.jpg",
+    rating: "4.8",
+    price: "₹17.49 Lakh",
+    range: "585 km",
+     battery: "55 kWh",
     content: `
 Tata Curvv EV is one of the most anticipated electric SUVs in India.
 
@@ -142,6 +168,10 @@ These vehicles provide great range and value.
     excerpt:
       "Complete review of Mahindra BE 6 including range, battery, performance and features.",
     image: "/news3.jpg",
+    rating: "4.8",
+    price: "₹17.49 Lakh",
+    range: "585 km",
+     battery: "55 kWh",
     category: "Reviews",
     readTime: "6 min read",
     date: "2026-06-15",

@@ -4,6 +4,12 @@ import Footer from "./components/Footer";
 import { posts } from "@/data/posts";
 import Link from "next/link";
 import { comparisons } from "@/data/comparisons";
+import {
+  ShieldCheck,
+  Newspaper,
+  BatteryCharging,
+  GitCompareArrows,
+} from "lucide-react";
 
 const featuredReviews = posts
   .filter((post) => post.category === "Reviews")
@@ -74,14 +80,16 @@ export default function Home() {
         </section>
 
         {/* Latest EV News */}
-        {/* <section className="max-w-7xl mx-auto px-6 py-24"> */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="flex items-center justify-between mb-12">
             {/* <h2 className="text-4xl font-bold"> */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Latest <span className="text-green-400">EV News</span>
             </h2>
-            <Link href="/blog" className="text-green-400 hover:text-green-300 whitespace-nowrap">
+            <Link
+              href="/blog"
+              className="text-green-400 hover:text-green-300 whitespace-nowrap"
+            >
               View All Reviews →
             </Link>
           </div>
@@ -108,9 +116,13 @@ export default function Home() {
                       <span className="text-gray-500 text-sm">{post.date}</span>
                     </div>
 
-                    <h3 className="text-xl font-bold mt-3 line-clamp-2">{post.title}</h3>
+                    <h3 className="text-xl font-bold mt-3 line-clamp-2">
+                      {post.title}
+                    </h3>
 
-                    <p className="text-gray-400 mt-3 line-clamp-3 flex-1">{post.excerpt}</p>
+                    <p className="text-gray-400 mt-3 line-clamp-3 flex-1">
+                      {post.excerpt}
+                    </p>
 
                     <div className="mt-5 text-green-400 font-medium hover:text-green-300">
                       Read More →
@@ -125,54 +137,77 @@ export default function Home() {
         {/* Feature Reviews */}
         <section className="max-w-7xl mx-auto px-6 py-24">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Featured <span className="text-green-400">Reviews</span>
             </h2>
 
-            <Link href="/blog" className="text-green-400 hover:text-green-300">
+            <Link
+              href="/blog"
+              className="text-green-400 hover:text-green-300 whitespace-nowrap"
+            >
               View All Reviews →
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredReviews.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block"
+                className="group"
               >
-                <div className="bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-800 hover:border-green-500 hover:-translate-y-2 transition-all duration-300 h-full flex flex-col">
-                  <img
-                    src={post.image}
-                    alt={post.title}
-                    className="w-full h-56 object-cover"
-                  />
+                <div className="bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-green-500 hover:-translate-y-2 transition-all duration-300 flex flex-col h-full">
+                  {/* Image */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={post.image}
+                      alt={post.title}
+                      className="w-full h-60 object-cover group-hover:scale-110 transition duration-500"
+                    />
 
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex justify-between items-center mb-4">
-                      <span className="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-sm">
-                        Review
-                      </span>
-
-                      <span className="text-gray-500 text-sm">
-                        {post.readTime}
-                      </span>
+                    {/* Rating */}
+                    <div className="absolute top-4 left-4 bg-green-500 text-black px-3 py-1 rounded-full font-bold shadow-lg">
+                      ⭐ {post.rating}
                     </div>
 
-                    <h3 className="text-2xl font-bold line-clamp-2">
+                    {/* Review Badge */}
+                    <div className="absolute top-4 right-4 bg-black/70 backdrop-blur text-white px-3 py-1 rounded-full text-sm">
+                      Review
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-2xl font-bold line-clamp-2 group-hover:text-green-400 transition">
                       {post.title}
                     </h3>
 
-                    <p className="text-gray-400 mt-4 line-clamp-3 flex-grow">
+                    <p className="text-gray-400 mt-3 line-clamp-3 flex-1">
                       {post.excerpt}
                     </p>
 
-                    <div className="mt-6 pt-4 border-t border-zinc-800 flex justify-between items-center">
-                      <span className="text-gray-500 text-sm">{post.date}</span>
+                    {/* Specs */}
+                    <div className="grid grid-cols-3 gap-3 mt-6 border-t border-zinc-800 pt-5">
+                      <div className="text-center">
+                        <p className="text-xs text-gray-500">Price</p>
+                        <p className="font-semibold text-sm mt-1">
+                          {post.price}
+                        </p>
+                      </div>
 
-                      <span className="text-green-400 font-semibold">
-                        Read Review →
-                      </span>
+                      <div className="text-center border-x border-zinc-800">
+                        <p className="text-xs text-gray-500">Range</p>
+                        <p className="font-semibold text-sm mt-1">
+                          {post.range}
+                        </p>
+                      </div>
+
+                      <div className="text-center">
+                        <p className="text-xs text-gray-500">Battery</p>
+                        <p className="font-semibold text-sm mt-1">
+                          {post.battery}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -184,13 +219,13 @@ export default function Home() {
         {/* Popular Comparisons */}
         <section className="max-w-7xl mx-auto px-6 py-24">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-4xl font-bold">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
               Popular <span className="text-green-400">Comparisons</span>
             </h2>
 
             <Link
               href="/comparison"
-              className="text-green-400 hover:text-green-300"
+              className="text-green-400 hover:text-green-300 whitespace-nowrap"
             >
               View All →
             </Link>
@@ -245,84 +280,130 @@ export default function Home() {
         </section>
 
         {/* Why Choose Us Section */}
-        <section className="max-w-7xl mx-auto px-6 py-24">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Why Choose
-              <span className="text-green-400"> EV Insights Hub</span>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="text-center mb-14">
+            <span className="text-green-400 font-semibold uppercase tracking-wider">
+              Why Choose Us
+            </span>
+
+            <h2 className="mt-4 text-3xl md:text-5xl font-bold">
+              Why Trust
+              <span className="text-green-400"> EV Insight Hub?</span>
             </h2>
 
-            <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
-              Your trusted source for electric vehicle news, reviews,
-              comparisons and buying guides.
+            <p className="text-gray-400 mt-5 max-w-2xl mx-auto">
+              We provide independent reviews, reliable EV news and expert buying
+              advice to help you make smarter decisions.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Card 1 */}
-            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-              <div className="text-4xl mb-4">📰</div>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition group">
+              <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center">
+                <ShieldCheck className="w-8 h-8 text-green-400" />
+              </div>
 
-              <h3 className="text-xl font-bold mb-3">Latest EV News</h3>
+              <h3 className="mt-6 text-xl font-bold">Independent Reviews</h3>
 
-              <p className="text-gray-400">
-                Stay updated with the latest electric vehicle launches, battery
-                technology and industry developments.
+              <p className="text-gray-400 mt-3">
+                Honest and unbiased EV reviews based on real-world research.
               </p>
             </div>
 
             {/* Card 2 */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-              <div className="text-4xl mb-4">🚗</div>
+              <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center">
+                <Newspaper className="w-8 h-8 text-green-400" />
+              </div>
 
-              <h3 className="text-xl font-bold mb-3">Honest Reviews</h3>
+              <h3 className="mt-6 text-xl font-bold">Latest EV News</h3>
 
-              <p className="text-gray-400">
-                Detailed reviews covering range, performance, charging speed and
-                ownership experience.
+              <p className="text-gray-400 mt-3">
+                Stay updated with launches, policies and industry developments.
               </p>
             </div>
 
             {/* Card 3 */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-              <div className="text-4xl mb-4">⚖️</div>
+              <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center">
+                <BatteryCharging className="w-8 h-8 text-green-400" />
+              </div>
 
-              <h3 className="text-xl font-bold mb-3">EV Comparisons</h3>
+              <h3 className="mt-6 text-xl font-bold">Charging Guides</h3>
 
-              <p className="text-gray-400">
-                Compare specifications, pricing, battery, charging and features
-                side-by-side.
+              <p className="text-gray-400 mt-3">
+                Learn charging costs, battery care and practical EV ownership
+                tips.
               </p>
             </div>
 
             {/* Card 4 */}
             <div className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 hover:border-green-500 transition">
-              <div className="text-4xl mb-4">🔋</div>
+              <div className="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center">
+                <GitCompareArrows className="w-8 h-8 text-green-400" />
+              </div>
 
-              <h3 className="text-xl font-bold mb-3">Buying Guides</h3>
+              <h3 className="mt-6 text-xl font-bold">Smart Comparisons</h3>
 
-              <p className="text-gray-400">
-                Learn about charging, batteries, incentives and EV ownership
-                before buying.
+              <p className="text-gray-400 mt-3">
+                Compare EVs by price, range, battery and features before buying.
               </p>
             </div>
           </div>
         </section>
 
         {/* Newsletter Section */}
-        <section className="max-w-4xl mx-auto text-center py-24">
-          <h2 className="text-4xl font-bold">Stay Updated with EV News</h2>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-zinc-900 via-zinc-900 to-green-950 border border-zinc-800 p-8 md:p-12">
+            {/* Background Glow */}
+            <div className="absolute -top-20 -right-20 w-72 h-72 bg-green-500/10 rounded-full blur-3xl"></div>
 
-          <div className="flex gap-4 mt-8 justify-center">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="px-6 py-4 rounded-xl bg-zinc-900"
-            />
+            <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+              {/* Left */}
+              <div className="text-center lg:text-left">
+                <span className="inline-block px-4 py-2 rounded-full bg-green-500/10 text-green-400 text-sm font-medium">
+                  📩 Newsletter
+                </span>
 
-            <button className="bg-green-500 text-black px-8 rounded-xl">
-              Subscribe
-            </button>
+                <h2 className="mt-5 text-3xl md:text-5xl font-bold">
+                  Stay Ahead of the
+                  <span className="text-green-400"> EV Revolution</span>
+                </h2>
+
+                <p className="mt-4 text-gray-400 max-w-lg mx-auto lg:mx-0">
+                  Get the latest EV news, reviews, buying guides and comparisons
+                  delivered directly to your inbox.
+                </p>
+              </div>
+
+              {/* Right */}
+              <div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    className="flex-1 h-14 rounded-xl bg-black/40 border border-zinc-700 px-5 outline-none focus:border-green-500"
+                  />
+
+                  <button className="h-14 px-8 rounded-xl bg-green-500 hover:bg-green-400 text-black font-semibold transition">
+                    Subscribe
+                  </button>
+                </div>
+
+                <p className="text-sm text-gray-500 mt-4 text-center sm:text-left">
+                  No spam. Unsubscribe anytime.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 text-sm text-gray-500">
+              <span>✓ Weekly EV Updates</span>
+
+              <span>✓ Independent Reviews</span>
+
+              <span>✓ No Spam</span>
+            </div>
           </div>
         </section>
       </main>
