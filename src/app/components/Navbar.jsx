@@ -15,6 +15,7 @@ export default function Navbar() {
   const navLinks = [
     { href: "/", label: "Home" },
     { href: "/blog", label: "News & Reviews" },
+    { href: "/ev", label: "EV Cars" },
     { href: "/comparison", label: "Comparison" },
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
@@ -47,14 +48,12 @@ export default function Navbar() {
         </div>
 
         {/* Search Bar */}
-      <Link
-        href="/search"
-        className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-zinc-700 hover:border-green-500 transition"
-      >
-        <Search size={18} />
-      </Link>
-
-  
+        <Link
+          href="/search"
+          className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-zinc-700 hover:border-green-500 transition"
+        >
+          <Search size={18} />
+        </Link>
 
         {/* Mobile Hamburger */}
         <button
@@ -64,7 +63,7 @@ export default function Navbar() {
           ☰
         </button>
       </div>
-      
+
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden border-t border-zinc-800 bg-black">
@@ -75,6 +74,10 @@ export default function Navbar() {
 
             <Link href="/blog" onClick={() => setMenuOpen(false)}>
               News & Reviews
+            </Link>
+
+            <Link href="/ev" onClick={() => setMenuOpen(false)}>
+              EV Cars
             </Link>
 
             <Link href="/comparison" onClick={() => setMenuOpen(false)}>

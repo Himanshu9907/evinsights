@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import { posts } from "@/data/posts";
 import Link from "next/link";
 import { comparisons } from "@/data/comparisons";
+import { prisma } from "@/lib/prisma";
 import {
   ShieldCheck,
   Newspaper,
@@ -15,9 +16,26 @@ const featuredReviews = posts
   .filter((post) => post.category === "Reviews")
   .slice(0, 3);
 
-export default function Home() {
+// const brands = await prisma.eVBrand.findMany();
+// const models = await prisma.eVModel.findMany({
+//   include: {
+//     brand: true,
+//   },
+// });
+
+export default async function Home() {
+  const brands = await prisma.eVBrand.findMany();
+  const models = await prisma.eVModel.findMany({
+    include: {
+      brand: true,
+    },
+  });
+
+  console.log("MODELS =>", models);
+
   return (
     <>
+
       <Navbar />
       <main className="bg-black text-white min-h-screen pt-18">
         {/* Hero Section */}
@@ -78,6 +96,34 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+       <section className="max-w-7xl mx-auto px-6 py-16">
+  <h2 className="text-4xl font-bold mb-8">
+    EV Models From Database
+  </h2>
+
+ {models.map((car) => (
+  <Link
+    key={car.id}
+    href={`/ev/${car.slug}`}
+  >
+    <div className="bg-zinc-900 p-6 rounded-2xl hover:bg-zinc-800 transition cursor-pointer">
+      <h3 className="text-xl font-bold">
+        {car.name}
+      </h3>
+
+      <p className="text-green-400">
+        {car.brand.name}
+      </p>
+
+      <p>{car.price}</p>
+      <p>{car.range}</p>
+    </div>
+  </Link>
+))}
+</section>
+
 
         {/* Latest EV News */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
@@ -412,3 +458,7 @@ export default function Home() {
     </>
   );
 }
+
+
+
+

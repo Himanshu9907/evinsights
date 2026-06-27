@@ -101,7 +101,7 @@ EVs generally become cheaper over long-term ownership.
   },
 
   {
-  slug: "tata-curvv-ev-review",
+  // slug: "tata-curvv-ev-review",
 
   title: "Tata Curvv EV Review",
 
@@ -123,7 +123,7 @@ EVs generally become cheaper over long-term ownership.
 },
 
   {
-    slug: "tata-curvv-ev-review",
+    // slug: "tata-curvv-ev-review",
     title: "Tata Curvv EV Review",
     category: "Reviews",
     excerpt: "Complete review of Tata Curvv EV including range and features.",
