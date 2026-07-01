@@ -21,7 +21,43 @@ bootSpace:500,
 groundClearance:190,
 warranty:"8 Years / 1.6 Lakh km",
 launchDate:"2025",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 },
 
 {
@@ -45,7 +81,43 @@ bootSpace:350,
 groundClearance:205,
 warranty:"8 Years",
 launchDate:"2024",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 },
 
 {
@@ -69,7 +141,43 @@ bootSpace:455,
 groundClearance:207,
 warranty:"Lifetime Battery",
 launchDate:"2025",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 },
 
 {
@@ -93,7 +201,43 @@ bootSpace:663,
 groundClearance:207,
 warranty:"Lifetime Battery",
 launchDate:"2025",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 },
 
 {
@@ -117,7 +261,43 @@ bootSpace:604,
 groundClearance:186,
 warranty:"8 Years",
 launchDate:"2025",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 },
 
 {
@@ -141,7 +321,44 @@ bootSpace:470,
 groundClearance:177,
 warranty:"8 Years",
 launchDate:"2024",
-featured:true
+featured:true,
+
+features: [
+  "ADAS Level 2",
+  "Panoramic Sunroof",
+  "360° Camera",
+  "Wireless Android Auto",
+  "Wireless Apple CarPlay",
+  "Ventilated Seats",
+  "Connected Car Tech",
+  "Cruise Control",
+  "Air Purifier",
+  "V2L Support",
+],
+
+gallery: [
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+  "/curvv-ev.jpg",
+],
+
+pros: [
+  "Excellent real-world driving range",
+  "Fast DC charging support",
+  "Level 2 ADAS safety",
+  "Premium cabin quality",
+  "Smooth and silent drive",
+],
+
+cons: [
+  "No AWD option",
+  "Top variant is expensive",
+  "Rear seat could be better",
+  "Limited service network",
+  "No spare wheel",
+],
 }
 
 ];

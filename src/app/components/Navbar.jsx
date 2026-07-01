@@ -27,7 +27,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-white">
-          EV <span className="text-green-400">Insights</span>
+          EV <span className="text-green-400">Insights Hub</span>
         </Link>
 
         {/* Desktop Menu */}
