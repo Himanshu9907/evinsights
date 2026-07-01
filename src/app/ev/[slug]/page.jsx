@@ -77,6 +77,13 @@ export default async function EVDetailPage({ params }) {
   },
 ];
 
+console.log({
+  features: vehicle.features,
+  gallery: vehicle.gallery,
+  pros: vehicle.pros,
+  cons: vehicle.cons,
+});
+
   return (
     <>
       <Navbar />
