@@ -15,6 +15,8 @@ import Variants from "./components/Variants";
 import VariantsTimeline from "./components/VariantsTimeline";
 import ProsCons from "./components/ProsCons";
 import FAQ from "./components/FAQ";
+import VehicleSidebar from "./components/VehicleSidebar";
+import EMICalculator from "./components/EMICalculator";
 
 export default async function EVDetailPage({ params }) {
   const { slug } = await params;
@@ -162,7 +164,7 @@ const vehicle = await prisma.eVModel.findUnique({
       <main className="min-h-screen bg-black text-white">
         <Hero vehicle={vehicle} />
 
-        <div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
+        {/* <div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
           <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
             <div className="space-y-10">
               <Specifications vehicle={vehicle} />
@@ -173,7 +175,7 @@ const vehicle = await prisma.eVModel.findUnique({
 
               <Performance vehicle={vehicle} />
 
-              {/* <Variants vehicle={vehicle} /> */}
+              <Variants vehicle={vehicle} />
 
               <VariantsTimeline vehicle={vehicle} />
 
@@ -184,11 +186,52 @@ const vehicle = await prisma.eVModel.findUnique({
               <ProsCons vehicle={vehicle} />
 
               <FAQ faqs={vehicle.faqs} />
+
+              <FAQ vehicle={vehicle} />
             </div>
 
             <Sidebar vehicle={vehicle} />
+             <VehicleSidebar vehicle={vehicle} />
           </div>
-        </div>
+        </div> */}
+
+        <div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
+
+  <div className="grid gap-8 lg:grid-cols-12">
+
+    <div className="space-y-10 lg:col-span-8">
+
+      <Specifications vehicle={vehicle} />
+
+      <BatteryChargingSection vehicle={vehicle} />
+
+      <ChargingCostCalculator vehicle={vehicle} />
+
+      <Performance vehicle={vehicle} />
+
+      <Variants vehicle={vehicle} />
+
+      <EMICalculator vehicle={vehicle} />
+
+      <Features vehicle={vehicle} />
+
+      <Gallery vehicle={vehicle} />
+
+      <ProsCons vehicle={vehicle} />
+
+      <FAQ vehicle={vehicle} />
+
+    </div>
+
+    <div className="hidden lg:block lg:col-span-4">
+
+      <VehicleSidebar vehicle={vehicle} />
+
+    </div>
+
+  </div>
+
+</div>
       </main>
       <Footer />
     </>

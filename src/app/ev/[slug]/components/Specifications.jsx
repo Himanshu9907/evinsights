@@ -1,8 +1,6 @@
 import {
   BatteryCharging,
   Zap,
-  Gauge,
-  Car,
   Ruler,
   ShieldCheck,
 } from "lucide-react";
@@ -13,7 +11,7 @@ export default function Specifications({ vehicle }) {
       title: "Battery & Range",
       icon: BatteryCharging,
       items: [
-        ["Battery Capacity", `${vehicle.batteryKwh} kWh`],
+        ["Battery", `${vehicle.batteryKwh} kWh`],
         ["Claimed Range", `${vehicle.claimedRange} km`],
         ["Real Range", `${vehicle.realRange} km`],
         ["AC Charging", vehicle.acCharging],
@@ -25,7 +23,7 @@ export default function Specifications({ vehicle }) {
       title: "Performance",
       icon: Zap,
       items: [
-        ["Power", `${vehicle.powerHp} hp`],
+        ["Power", `${vehicle.powerHp} HP`],
         ["Torque", `${vehicle.torqueNm} Nm`],
         ["Top Speed", `${vehicle.topSpeed} km/h`],
         ["Drive Type", vehicle.driveType],
@@ -39,15 +37,18 @@ export default function Specifications({ vehicle }) {
         ["Body Type", vehicle.bodyType],
         ["Seating", `${vehicle.seating} Seats`],
         ["Boot Space", `${vehicle.bootSpace} L`],
-        ["Ground Clearance", `${vehicle.groundClearance} mm`],
+        [
+          "Ground Clearance",
+          `${vehicle.groundClearance} mm`,
+        ],
       ],
     },
 
     {
-      title: "Other Details",
+      title: "Warranty",
       icon: ShieldCheck,
       items: [
-        ["Warranty", vehicle.warranty],
+        ["Vehicle Warranty", vehicle.warranty],
         ["Launch Year", vehicle.launchDate],
       ],
     },
@@ -56,69 +57,128 @@ export default function Specifications({ vehicle }) {
   return (
     <section className="mt-0">
 
-      <div className="mb-10">
+      {/* Header */}
 
-        <h2 className="text-3xl font-bold">
+      <div className="mb-8">
+
+        <span className="inline-flex rounded-full border border-green-500/20 bg-green-500/10 px-3 py-1 text-xs font-medium uppercase tracking-wider text-green-400">
           Specifications
+        </span>
+
+        <h2 className="mt-3 text-3xl font-bold tracking-tight text-white">
+          Technical Specifications
         </h2>
 
-        <p className="mt-2 text-zinc-400">
-          Complete technical specifications of the {vehicle.name}.
+        <p className="mt-2 max-w-2xl text-sm text-zinc-400">
+          Explore the complete specifications of{" "}
+          <span className="font-semibold text-white">
+            {vehicle.name}
+          </span>
+          .
         </p>
 
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      {/* Cards */}
+
+      <div className="grid gap-5 lg:grid-cols-2">
 
         {sections.map((section) => {
+
           const Icon = section.icon;
 
           return (
+
             <div
               key={section.title}
-              className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 transition hover:border-green-500"
+              className="
+                group
+                rounded-2xl
+                border
+                border-zinc-800
+                bg-zinc-900
+                p-5
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:border-green-500/30
+                hover:shadow-lg
+              "
             >
 
-              <div className="mb-6 flex items-center gap-3">
+              {/* Card Header */}
 
-                <div className="rounded-xl bg-green-500/10 p-3">
+              <div className="mb-5 flex items-center gap-3">
+
+                <div
+                  className="
+                    flex
+                    h-10
+                    w-10
+                    items-center
+                    justify-center
+                    rounded-xl
+                    bg-green-500/10
+                    transition
+                    group-hover:bg-green-500/20
+                  "
+                >
 
                   <Icon
-                    size={22}
+                    size={20}
                     className="text-green-400"
                   />
 
                 </div>
 
-                <h3 className="text-xl font-semibold">
+                <h3 className="text-lg font-semibold text-white">
                   {section.title}
                 </h3>
 
               </div>
 
-              <div className="space-y-4">
+              {/* Items */}
+
+              <div className="space-y-2">
 
                 {section.items.map(([label, value]) => (
+
                   <div
                     key={label}
-                    className="flex items-center justify-between border-b border-zinc-800 pb-3"
+                    className="
+                      flex
+                      items-center
+                      justify-between
+                      rounded-xl
+                      border
+                      border-zinc-800
+                      bg-zinc-950/40
+                      px-4
+                      py-3
+                      transition
+                      hover:border-zinc-700
+                      hover:bg-zinc-950
+                    "
                   >
 
-                    <span className="text-zinc-400">
+                    <span className="text-sm text-zinc-400">
                       {label}
                     </span>
 
-                    <span className="font-semibold text-white">
+                    <span className="text-sm font-semibold text-white text-right">
                       {value}
                     </span>
 
                   </div>
+
                 ))}
 
               </div>
 
             </div>
+
           );
+
         })}
 
       </div>
