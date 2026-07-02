@@ -13,8 +13,10 @@ import {
 } from "lucide-react";
 
 export default function Features({ vehicle }) {
+  // const getIcon = (feature) => {
+  //   const text = feature.toLowerCase();
   const getIcon = (feature) => {
-    const text = feature.toLowerCase();
+    const text = feature.title.toLowerCase();
 
     if (text.includes("adas")) return ShieldCheck;
     if (text.includes("camera")) return Camera;
@@ -33,32 +35,26 @@ export default function Features({ vehicle }) {
 
   return (
     <section className="mt-20">
-
       {/* Heading */}
 
       <div className="mb-8">
-
-        <h2 className="text-3xl font-bold text-white">
-          Key Features
-        </h2>
+        <h2 className="text-3xl font-bold text-white">Key Features</h2>
 
         <p className="mt-2 text-zinc-400">
           Premium features available in {vehicle.name}.
         </p>
-
       </div>
 
       {/* Features Grid */}
 
-     
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-
-  {(vehicle.features || []).map((feature, index) => {
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {(vehicle.features || []).map((feature, index) => {
           const Icon = getIcon(feature);
 
           return (
             <div
-              key={index}
+              // key={index}
+              key={feature.id}
               className="
                 group
                 flex
@@ -92,13 +88,10 @@ export default function Features({ vehicle }) {
                 />
               </div>
 
-              <span className="font-medium text-white">
-                {feature}
-              </span>
+              <span className="font-medium text-white">{feature.title}</span>
             </div>
           );
         })}
-
       </div>
     </section>
   );

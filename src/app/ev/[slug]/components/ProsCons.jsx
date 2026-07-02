@@ -42,7 +42,7 @@ export default function ProsCons({ vehicle }) {
 
           <div className="space-y-4">
 
-            {pros.map((item) => (
+            {/* {pros.map((item) => (
               <div
                 key={item}
                 className="flex items-start gap-3"
@@ -56,8 +56,24 @@ export default function ProsCons({ vehicle }) {
                   {item}
                 </span>
               </div>
-            ))}
+            ))} */}
 
+
+{pros.map((item) => (
+  <div
+    key={item.id}
+    className="flex items-start gap-3"
+  >
+    <CheckCircle2
+      size={18}
+      className="mt-0.5 shrink-0 text-green-400"
+    />
+
+    <span className="text-sm text-zinc-300">
+      {item.title}
+    </span>
+  </div>
+))}
           </div>
 
         </div>
@@ -81,7 +97,7 @@ export default function ProsCons({ vehicle }) {
 
           <div className="space-y-4">
 
-            {cons.map((item) => (
+            {/* {cons.map((item) => (
               <div
                 key={item}
                 className="flex items-start gap-3"
@@ -95,7 +111,23 @@ export default function ProsCons({ vehicle }) {
                   {item}
                 </span>
               </div>
-            ))}
+            ))} */}
+
+            {cons.map((item) => (
+  <div
+    key={item.id}
+    className="flex items-start gap-3"
+  >
+    <XCircle
+      size={18}
+      className="mt-0.5 shrink-0 text-red-400"
+    />
+
+    <span className="text-sm text-zinc-300">
+      {item.title}
+    </span>
+  </div>
+))}
 
           </div>
 

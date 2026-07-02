@@ -7,81 +7,138 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String    @id @default(cuid())
-  name      String
-  email     String    @unique
-  password  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  role      String    @default("USER")
-  articles  Article[]
-}
+//////////////////////////////////////////////////////
+// USER
+//////////////////////////////////////////////////////
 
-model Category {
-  id       String    @id @default(cuid())
-  name     String
-  slug     String    @unique
+model User {
+  id String @id @default(cuid())
+
+  name String
+
+  email String @unique
+
+  password String
+
+  role String @default("USER")
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
   articles Article[]
 }
 
-model Article {
-  id         String   @id @default(cuid())
-  title      String
-  slug       String   @unique
-  excerpt    String
-  content    String
-  image      String?
-  published  Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  authorId   String
-  categoryId String
-  author     User     @relation(fields: [authorId], references: [id])
-  category   Category @relation(fields: [categoryId], references: [id])
-}
+//////////////////////////////////////////////////////
+// CATEGORY
+//////////////////////////////////////////////////////
 
-model EVBrand {
-  id        String   @id @default(cuid())
-  name      String   @unique
-  slug      String   @unique
-  logo      String?
-  country   String?
+model Category {
+  id String @id @default(cuid())
+
+  name String
+
+  slug String @unique
 
   createdAt DateTime @default(now())
+
   updatedAt DateTime @updatedAt
 
-  models    EVModel[]
+  articles Article[]
 }
 
+//////////////////////////////////////////////////////
+// ARTICLE
+//////////////////////////////////////////////////////
+
+model Article {
+  id String @id @default(cuid())
+
+  title String
+
+  slug String @unique
+
+  excerpt String
+
+  content String
+
+  image String?
+
+  published Boolean @default(false)
+
+  authorId String
+
+  categoryId String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  author User @relation(fields: [authorId], references: [id])
+
+  category Category @relation(fields: [categoryId], references: [id])
+}
+
+//////////////////////////////////////////////////////
+// BRAND
+//////////////////////////////////////////////////////
+
+model EVBrand {
+  id String @id @default(cuid())
+
+  name String @unique
+
+  slug String @unique
+
+  logo String?
+
+  country String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  models EVModel[]
+}
+
+//////////////////////////////////////////////////////
+// EV MODEL
+//////////////////////////////////////////////////////
+
 model EVModel {
+  id String @id @default(cuid())
 
-  id        String   @id @default(cuid())
+  name String
 
-  name      String
-  slug      String   @unique
+  slug String @unique
 
-  image     String?
+  image String?
 
   overview String?
 
-  features String[]
+  featured Boolean @default(false)
 
-  gallery String[]
-
-  colors String[]
-
-  pros String[]
-
-  cons String[]
+  //----------------------------------
+  // Pricing
+  //----------------------------------
 
   exShowroomPrice Int?
 
+  //----------------------------------
+  // Battery
+  //----------------------------------
+
   batteryKwh Float?
+
+  batteryType String?
 
   claimedRange Int?
 
   realRange Int?
+
+  //----------------------------------
+  // Performance
+  //----------------------------------
 
   powerHp Int?
 
@@ -89,25 +146,51 @@ model EVModel {
 
   topSpeed Int?
 
+  acceleration Float?
+
+  //----------------------------------
+  // Dimensions
+  //----------------------------------
+
   seating Int?
 
   bodyType String?
 
   driveType String?
 
-  acCharging String?
+  lengthMm Int?
 
-  dcCharging String?
+  widthMm Int?
+
+  heightMm Int?
+
+  wheelbaseMm Int?
 
   bootSpace Int?
 
   groundClearance Int?
 
+  //----------------------------------
+  // Charging
+  //----------------------------------
+
+  acCharging String?
+
+  dcCharging String?
+
+  chargingPort String?
+
+  //----------------------------------
+  // Warranty
+  //----------------------------------
+
   warranty String?
+
+  batteryWarranty String?
 
   launchDate String?
 
-  featured Boolean @default(false)
+  //----------------------------------
 
   brandId String
 
@@ -115,21 +198,458 @@ model EVModel {
 
   updatedAt DateTime @updatedAt
 
+  //----------------------------------
+
   brand EVBrand @relation(fields: [brandId], references: [id])
 
+  //----------------------------------
+  // Relations
+  //----------------------------------
+
   specs EVSpec[]
+
+  variants EVVariant[]
+
+  faqs EVFAQ[]
+
+  features EVFeature[]
+
+  gallery EVGalleryImage[]
+
+  colors EVColor[]
+
+  pros EVPro[]
+
+  cons EVCon[]
+
+  safety EVSafety?
+
+  charging EVCharging?
+
+  performance EVPerformance?
+
+  ownership EVOwnership?
+
+  evreviews            EVReview[]
+  evrating             EVRating?
+  evnews               EVNews[]
+  evcomparisonVehicles EVComparisonVehicle[]
 }
 
-model EVSpec {
+//////////////////////////////////////////////////////
+// SPECIFICATIONS
+//////////////////////////////////////////////////////
 
+model EVSpec {
   id String @id @default(cuid())
 
   key String
 
   value String
 
+  category String?
+
+  order Int @default(0)
+
   modelId String
 
-  model EVModel @relation(fields:[modelId],references:[id])
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
 
+//////////////////////////////////////////////////////
+// VARIANTS
+//////////////////////////////////////////////////////
+
+model EVVariant {
+  id String @id @default(cuid())
+
+  name String
+
+  price Int?
+
+  battery String?
+
+  range Int?
+
+  power Int?
+
+  torque Int?
+
+  topSpeed Int?
+
+  acceleration Float?
+
+  recommended Boolean @default(false)
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// FEATURES
+//////////////////////////////////////////////////////
+
+model EVFeature {
+  id String @id @default(cuid())
+
+  title String
+
+  icon String?
+
+  category String?
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// GALLERY
+//////////////////////////////////////////////////////
+
+model EVGalleryImage {
+  id String @id @default(cuid())
+
+  image String
+
+  caption String?
+
+  isPrimary Boolean @default(false)
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// COLORS
+//////////////////////////////////////////////////////
+
+model EVColor {
+  id String @id @default(cuid())
+
+  name String
+
+  hexCode String?
+
+  image String?
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// FAQ
+//////////////////////////////////////////////////////
+
+model EVFAQ {
+  id String @id @default(cuid())
+
+  question String
+
+  answer String
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// PROS
+//////////////////////////////////////////////////////
+
+model EVPro {
+  id String @id @default(cuid())
+
+  title String
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// CONS
+//////////////////////////////////////////////////////
+
+model EVCon {
+  id String @id @default(cuid())
+
+  title String
+
+  order Int @default(0)
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// SAFETY
+//////////////////////////////////////////////////////
+
+model EVSafety {
+  id String @id @default(cuid())
+
+  airbags Int?
+
+  adasLevel String?
+
+  ncapRating Int?
+
+  abs Boolean?
+
+  ebd Boolean?
+
+  esc Boolean?
+
+  tractionControl Boolean?
+
+  tpms Boolean?
+
+  hillHold Boolean?
+
+  hillDescent Boolean?
+
+  isofix Boolean?
+
+  camera360 Boolean?
+
+  blindSpotMonitor Boolean?
+
+  parkingSensors String?
+
+  emergencyBraking Boolean?
+
+  laneKeepAssist Boolean?
+
+  adaptiveCruise Boolean?
+
+  driverDrowsiness Boolean?
+
+  modelId String @unique
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// CHARGING
+//////////////////////////////////////////////////////
+
+model EVCharging {
+  id String @id @default(cuid())
+
+  homeChargerPower String?
+
+  homeChargingTime String?
+
+  dcFastChargePower String?
+
+  dcChargingTime String?
+
+  chargingPort String?
+
+  chargerIncluded Boolean?
+
+  portableCharger Boolean?
+
+  wallBoxCharger Boolean?
+
+  v2l Boolean?
+
+  v2v Boolean?
+
+  batteryPreCondition Boolean?
+
+  modelId String @unique
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// PERFORMANCE
+//////////////////////////////////////////////////////
+
+model EVPerformance {
+  id String @id @default(cuid())
+
+  zeroToHundred Float?
+
+  powerToWeight Float?
+
+  driveModes String?
+
+  regenLevels Int?
+
+  suspensionFront String?
+
+  suspensionRear String?
+
+  turningRadius Float?
+
+  motorType String?
+
+  maxPower String?
+
+  maxTorque String?
+
+  modelId String @unique
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// OWNERSHIP
+//////////////////////////////////////////////////////
+
+model EVOwnership {
+  id String @id @default(cuid())
+
+  serviceInterval String?
+
+  yearlyServiceCost Int?
+
+  insuranceCost Int?
+
+  batteryReplacementCost Int?
+
+  roadsideAssistance Boolean?
+
+  warrantyYears Int?
+
+  warrantyKm Int?
+
+  resaleRating Float?
+
+  maintenanceRating Float?
+
+  modelId String @unique
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// USER REVIEWS
+//////////////////////////////////////////////////////
+
+model EVReview {
+  id String @id @default(cuid())
+
+  userName String
+
+  title String?
+
+  review String
+
+  rating Float
+
+  verified Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  modelId String
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// EXPERT RATING
+//////////////////////////////////////////////////////
+
+model EVRating {
+  id String @id @default(cuid())
+
+  overall Float?
+
+  safety Float?
+
+  performance Float?
+
+  comfort Float?
+
+  features Float?
+
+  valueForMoney Float?
+
+  charging Float?
+
+  verdict String?
+
+  modelId String @unique
+
+  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+}
+
+//////////////////////////////////////////////////////
+// EV NEWS
+//////////////////////////////////////////////////////
+
+model EVNews {
+  id String @id @default(cuid())
+
+  title String
+
+  slug String @unique
+
+  excerpt String
+
+  content String
+
+  image String?
+
+  published Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  modelId String?
+
+  model EVModel? @relation(fields: [modelId], references: [id], onDelete: SetNull)
+}
+
+model EVComparison {
+  id String @id @default(cuid())
+
+  title String
+
+  slug String @unique
+
+  description String?
+
+  featured Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  vehicles EVComparisonVehicle[]
+}
+
+model EVComparisonVehicle {
+  id String @id @default(cuid())
+
+  comparisonId String
+
+  vehicleId String
+
+  order Int
+
+  comparison EVComparison @relation(fields: [comparisonId], references: [id], onDelete: Cascade)
+
+  vehicle EVModel @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
 }

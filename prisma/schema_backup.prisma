@@ -1,0 +1,152 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  name      String
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  role      String    @default("USER")
+  articles  Article[]
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  articles Article[]
+}
+
+model Article {
+  id         String   @id @default(cuid())
+  title      String
+  slug       String   @unique
+  excerpt    String
+  content    String
+  image      String?
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  authorId   String
+  categoryId String
+  author     User     @relation(fields: [authorId], references: [id])
+  category   Category @relation(fields: [categoryId], references: [id])
+}
+
+model EVBrand {
+  id        String   @id @default(cuid())
+  name      String   @unique
+  slug      String   @unique
+  logo      String?
+  country   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  models    EVModel[]
+}
+
+model EVModel {
+
+  id        String   @id @default(cuid())
+
+  name      String
+  slug      String   @unique
+
+  image     String?
+
+  overview String?
+
+  features String[]
+
+  gallery String[]
+
+  colors String[]
+
+  pros String[]
+
+  cons String[]
+
+  exShowroomPrice Int?
+
+  batteryKwh Float?
+
+  claimedRange Int?
+
+  realRange Int?
+
+  powerHp Int?
+
+  torqueNm Int?
+
+  topSpeed Int?
+
+  seating Int?
+
+  bodyType String?
+
+  driveType String?
+
+  acCharging String?
+
+  dcCharging String?
+
+  bootSpace Int?
+
+  groundClearance Int?
+
+  warranty String?
+
+  launchDate String?
+
+  featured Boolean @default(false)
+
+  brandId String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  brand EVBrand @relation(fields: [brandId], references: [id])
+
+  specs EVSpec[]
+
+  faqs EVFAQ[]
+}
+
+model EVSpec {
+
+  id String @id @default(cuid())
+
+  key String
+
+  value String
+
+  modelId String
+
+  model EVModel @relation(fields:[modelId],references:[id])
+
+}
+
+model EVFAQ {
+  id        String   @id @default(cuid())
+
+  question  String
+  answer    String
+
+  order     Int      @default(0)
+
+  modelId   String
+  model     EVModel  @relation(fields: [modelId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

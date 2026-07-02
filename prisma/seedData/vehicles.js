@@ -1,364 +1,417 @@
 export const vehicles = [
+  {
+    // ==========================================
+    // BASIC INFO
+    // ==========================================
 
-{
-brand:"Tata",
-name:"Curvv EV",
-slug:"tata-curvv-ev",
-image:"/curvv-ev.jpg",
-exShowroomPrice:1749000,
-batteryKwh:55,
-claimedRange:585,
-realRange:480,
-powerHp:165,
-torqueNm:215,
-topSpeed:160,
-seating:5,
-bodyType:"SUV Coupe",
-driveType:"FWD",
-acCharging:"7.2 Hours",
-dcCharging:"40 Minutes",
-bootSpace:500,
-groundClearance:190,
-warranty:"8 Years / 1.6 Lakh km",
-launchDate:"2025",
-featured:true,
+    brand: "Tata",
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+    name: "Curvv EV",
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+    slug: "tata-curvv-ev",
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-},
+    image: "/curvv-ev.jpg",
 
-{
-brand:"Tata",
-name:"Nexon EV",
-slug:"tata-nexon-ev",
-image:"/nexon-ev.jpg",
-exShowroomPrice:1299000,
-batteryKwh:45,
-claimedRange:489,
-realRange:390,
-powerHp:145,
-torqueNm:215,
-topSpeed:150,
-seating:5,
-bodyType:"SUV",
-driveType:"FWD",
-acCharging:"6 Hours",
-dcCharging:"56 Minutes",
-bootSpace:350,
-groundClearance:205,
-warranty:"8 Years",
-launchDate:"2024",
-featured:true,
+    overview:
+      "The Tata Curvv EV is Tata Motors' premium electric SUV Coupe offering modern styling, excellent range, Level 2 ADAS and fast charging.",
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+    featured: true,
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+    // ==========================================
+    // PRICING
+    // ==========================================
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-},
+    pricing: {
+      exShowroomPrice: 1749000,
+    },
 
-{
-brand:"Mahindra",
-name:"BE 6",
-slug:"mahindra-be6",
-image:"/be6.jpg",
-exShowroomPrice:1890000,
-batteryKwh:59,
-claimedRange:683,
-realRange:540,
-powerHp:231,
-torqueNm:380,
-topSpeed:180,
-seating:5,
-bodyType:"SUV",
-driveType:"RWD",
-acCharging:"6 Hours",
-dcCharging:"20 Minutes",
-bootSpace:455,
-groundClearance:207,
-warranty:"Lifetime Battery",
-launchDate:"2025",
-featured:true,
+    // ==========================================
+    // BATTERY
+    // ==========================================
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+    battery: {
+      batteryKwh: 55,
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+      batteryType: "Lithium-ion",
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-},
+      claimedRange: 585,
 
-{
-brand:"Mahindra",
-name:"XEV 9e",
-slug:"mahindra-xev-9e",
-image:"/xev-9e.jpg",
-exShowroomPrice:2190000,
-batteryKwh:79,
-claimedRange:656,
-realRange:560,
-powerHp:286,
-torqueNm:380,
-topSpeed:190,
-seating:5,
-bodyType:"SUV Coupe",
-driveType:"RWD",
-acCharging:"8 Hours",
-dcCharging:"20 Minutes",
-bootSpace:663,
-groundClearance:207,
-warranty:"Lifetime Battery",
-launchDate:"2025",
-featured:true,
+      realRange: 480,
+    },
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+    // ==========================================
+    // PERFORMANCE
+    // ==========================================
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+    performance: {
+      zeroToHundred: 8.6,
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-},
+      topSpeed: 160,
 
-{
-brand:"MG",
-name:"Windsor EV",
-slug:"mg-windsor-ev",
-image:"/windsor-ev.jpg",
-exShowroomPrice:1399000,
-batteryKwh:38,
-claimedRange:332,
-realRange:280,
-powerHp:136,
-torqueNm:200,
-topSpeed:150,
-seating:5,
-bodyType:"CUV",
-driveType:"FWD",
-acCharging:"6.5 Hours",
-dcCharging:"45 Minutes",
-bootSpace:604,
-groundClearance:186,
-warranty:"8 Years",
-launchDate:"2025",
-featured:true,
+      motorType: "Permanent Magnet Synchronous Motor",
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+      maxPower: "165 HP",
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+      maxTorque: "215 Nm",
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-},
+      driveModes: "Eco, City, Sport",
 
-{
-brand:"MG",
-name:"ZS EV",
-slug:"mg-zs-ev",
-image:"/mg-zs-ev.jpg",
-exShowroomPrice:1898000,
-batteryKwh:50,
-claimedRange:461,
-realRange:360,
-powerHp:176,
-torqueNm:280,
-topSpeed:175,
-seating:5,
-bodyType:"SUV",
-driveType:"FWD",
-acCharging:"8.5 Hours",
-dcCharging:"60 Minutes",
-bootSpace:470,
-groundClearance:177,
-warranty:"8 Years",
-launchDate:"2024",
-featured:true,
+      regenLevels: 4,
+    },
 
-features: [
-  "ADAS Level 2",
-  "Panoramic Sunroof",
-  "360° Camera",
-  "Wireless Android Auto",
-  "Wireless Apple CarPlay",
-  "Ventilated Seats",
-  "Connected Car Tech",
-  "Cruise Control",
-  "Air Purifier",
-  "V2L Support",
-],
+    // ==========================================
+    // DIMENSIONS
+    // ==========================================
 
-gallery: [
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-  "/curvv-ev.jpg",
-],
+    dimensions: {
+      seating: 5,
 
-pros: [
-  "Excellent real-world driving range",
-  "Fast DC charging support",
-  "Level 2 ADAS safety",
-  "Premium cabin quality",
-  "Smooth and silent drive",
-],
+      bodyType: "SUV Coupe",
 
-cons: [
-  "No AWD option",
-  "Top variant is expensive",
-  "Rear seat could be better",
-  "Limited service network",
-  "No spare wheel",
-],
-}
+      driveType: "FWD",
 
+      bootSpace: 500,
+
+      groundClearance: 190,
+    },
+
+    // ==========================================
+    // CHARGING
+    // ==========================================
+
+    charging: {
+      homeChargerPower: "7.2 kW",
+
+      homeChargingTime: "7.2 Hours",
+
+      dcFastChargePower: "70 kW",
+
+      dcChargingTime: "40 Minutes",
+
+      chargingPort: "CCS2",
+
+      chargerIncluded: true,
+
+      portableCharger: true,
+
+      wallBoxCharger: true,
+
+      v2l: true,
+
+      v2v: false,
+
+      batteryPreCondition: true,
+    },
+
+    // ==========================================
+    // WARRANTY
+    // ==========================================
+
+    warranty: {
+      vehicleWarranty: "3 Years",
+
+      batteryWarranty: "8 Years / 1.6 Lakh km",
+
+      launchDate: "2025",
+    },
+
+    // ==========================================
+    // SPECIFICATIONS
+    // ==========================================
+
+    specs: [
+      {
+        key: "Power",
+
+        value: "165 HP",
+
+        category: "Performance",
+      },
+
+      {
+        key: "Torque",
+
+        value: "215 Nm",
+
+        category: "Performance",
+      },
+
+      {
+        key: "Battery",
+
+        value: "55 kWh",
+
+        category: "Battery",
+      },
+
+      {
+        key: "Range",
+
+        value: "585 km",
+
+        category: "Battery",
+      },
+
+      {
+        key: "Boot Space",
+
+        value: "500 L",
+
+        category: "Dimensions",
+      },
+
+      {
+        key: "Ground Clearance",
+
+        value: "190 mm",
+
+        category: "Dimensions",
+      },
+    ],
+
+    // ==========================================
+    // VARIANTS
+    // ==========================================
+
+    variants: [
+      {
+        name: "Creative",
+
+        price: 1749000,
+
+        battery: "55 kWh",
+
+        range: 585,
+
+        power: 165,
+
+        torque: 215,
+
+        topSpeed: 160,
+
+        acceleration: 8.6,
+
+        recommended: false,
+      },
+
+      {
+        name: "Accomplished",
+
+        price: 1899000,
+
+        battery: "55 kWh",
+
+        range: 585,
+
+        power: 165,
+
+        torque: 215,
+
+        topSpeed: 160,
+
+        acceleration: 8.6,
+
+        recommended: true,
+      },
+    ],
+
+    // ==========================================
+    // FEATURES
+    // ==========================================
+
+    features: [
+      { title: "ADAS Level 2", category: "Safety" },
+
+      { title: "Panoramic Sunroof", category: "Exterior" },
+
+      { title: "360° Camera", category: "Safety" },
+
+      { title: "Wireless Android Auto", category: "Technology" },
+
+      { title: "Wireless Apple CarPlay", category: "Technology" },
+
+      { title: "Ventilated Seats", category: "Comfort" },
+
+      { title: "Connected Car Tech", category: "Technology" },
+
+      { title: "Cruise Control", category: "Safety" },
+
+      { title: "Air Purifier", category: "Comfort" },
+
+      { title: "V2L Support", category: "Charging" },
+    ],
+
+    // ==========================================
+    // GALLERY
+    // ==========================================
+
+    gallery: [
+      {
+        image: "/curvv-ev.jpg",
+
+        caption: "Front View",
+
+        isPrimary: true,
+      },
+
+      {
+        image: "/curvv-ev.jpg",
+
+        caption: "Side View",
+      },
+
+      {
+        image: "/curvv-ev.jpg",
+
+        caption: "Rear View",
+      },
+
+      {
+        image: "/curvv-ev.jpg",
+
+        caption: "Interior",
+      },
+    ],
+
+    // ==========================================
+    // COLORS
+    // ==========================================
+
+    colors: [
+      {
+        name: "White",
+
+        hexCode: "#ffffff",
+      },
+
+      {
+        name: "Red",
+
+        hexCode: "#ff0000",
+      },
+
+      {
+        name: "Blue",
+
+        hexCode: "#0055ff",
+      },
+    ],
+
+    // ==========================================
+    // PROS
+    // ==========================================
+
+    pros: [
+      { title: "Excellent real-world range" },
+
+      { title: "Premium interior quality" },
+
+      { title: "Fast DC charging" },
+
+      { title: "Level 2 ADAS" },
+
+      { title: "Smooth driving experience" },
+    ],
+
+    // ==========================================
+    // CONS
+    // ==========================================
+
+    cons: [
+      { title: "No AWD option" },
+
+      { title: "Rear visibility could be better" },
+
+      { title: "Top variant expensive" },
+
+      { title: "Limited service network" },
+    ],
+
+    // ==========================================
+    // FAQ
+    // ==========================================
+
+    faqs: [
+      {
+        question: "What is the real-world range?",
+
+        answer:
+          "The Tata Curvv EV delivers around 450–500 km in mixed driving conditions.",
+      },
+
+      {
+        question: "Does it support DC fast charging?",
+
+        answer:
+          "Yes, it supports DC fast charging and can charge from 10% to 80% in around 40 minutes.",
+      },
+    ],
+
+    // ==========================================
+    // SAFETY
+    // ==========================================
+
+    safety: {
+      airbags: 6,
+
+      adasLevel: "Level 2",
+
+      abs: true,
+
+      ebd: true,
+
+      esc: true,
+
+      tractionControl: true,
+
+      tpms: true,
+
+      hillHold: true,
+
+      isofix: true,
+
+      camera360: true,
+    },
+
+    // ==========================================
+    // OWNERSHIP
+    // ==========================================
+
+    ownership: {
+      serviceInterval: "15000 km",
+
+      yearlyServiceCost: 4500,
+
+      insuranceCost: 32000,
+
+      roadsideAssistance: true,
+
+      resaleRating: 4.5,
+
+      maintenanceRating: 4.7,
+    },
+
+    // ==========================================
+    // EXPERT RATING
+    // ==========================================
+
+    rating: {
+      overall: 4.7,
+
+      safety: 4.8,
+
+      performance: 4.6,
+
+      comfort: 4.7,
+
+      features: 4.8,
+
+      charging: 4.6,
+
+      valueForMoney: 4.5,
+
+      verdict:
+        "One of the best premium electric SUVs currently available in India.",
+    },
+  },
 ];

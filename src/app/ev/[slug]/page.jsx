@@ -14,75 +14,147 @@ import Performance from "./components/Performance";
 import Variants from "./components/Variants";
 import VariantsTimeline from "./components/VariantsTimeline";
 import ProsCons from "./components/ProsCons";
+import FAQ from "./components/FAQ";
 
 export default async function EVDetailPage({ params }) {
   const { slug } = await params;
 
-  const vehicle = await prisma.eVModel.findUnique({
-    where: {
-      slug,
+  // const vehicle = await prisma.eVModel.findUnique({
+  //   where: {
+  //     slug,
+  //   },
+  //   include: {
+  //     brand: true,
+  //   },
+  // });
+
+// const vehicle = await prisma.eVModel.findUnique({
+//   where: {
+//     slug,
+//   },
+//   include: {
+//     brand: true,
+//     faqs: {
+//       orderBy: {
+//         order: "asc",
+//       },
+//     },
+//   },
+// });
+
+
+const vehicle = await prisma.eVModel.findUnique({
+  where: {
+    slug,
+  },
+  include: {
+    brand: true,
+
+    faqs: {
+      orderBy: {
+        order: "asc",
+      },
     },
-    include: {
-      brand: true,
+
+    features: {
+      orderBy: {
+        order: "asc",
+      },
     },
-  });
+
+    gallery: {
+      orderBy: {
+        order: "asc",
+      },
+    },
+
+    pros: {
+      orderBy: {
+        order: "asc",
+      },
+    },
+
+    cons: {
+      orderBy: {
+        order: "asc",
+      },
+    },
+
+    colors: true,
+    specs: true,
+    variants: true,
+    safety: true,
+    charging: true,
+    performance: true,
+    ownership: true,
+  },
+});
+
+// console.log(vehicle.faqs);
+
+  // console.log({
+  //   features: vehicle.features,
+  //   gallery: vehicle.gallery,
+  //   pros: vehicle.pros,
+  //   cons: vehicle.cons,
+  // });
 
   if (!vehicle) {
     notFound();
   }
 
-  vehicle.variants = [
-  {
-    name: "Executive",
-    price: 1399000,
-    battery: "38 kWh",
-    range: "332 km",
-    power: "136 HP",
-    recommended: false,
-    features: [
-      "LED Headlamps",
-      "Automatic Climate Control",
-      "Rear Camera",
-      "Cruise Control",
-    ],
-  },
-  {
-    name: "Exclusive",
-    price: 1549000,
-    battery: "50 kWh",
-    range: "461 km",
-    power: "176 HP",
-    recommended: false,
-    features: [
-      "Panoramic Sunroof",
-      "Wireless Android Auto",
-      "Wireless Apple CarPlay",
-      "360° Camera",
-    ],
-  },
-  {
-    name: "Essence",
-    price: 1699000,
-    battery: "50 kWh",
-    range: "461 km",
-    power: "176 HP",
-    recommended: true,
-    features: [
-      "ADAS Level 2",
-      "Ventilated Seats",
-      "360° Camera",
-      "Premium Audio System",
-      "V2L Support",
-    ],
-  },
-];
-
-console.log({
+  console.log({
   features: vehicle.features,
   gallery: vehicle.gallery,
   pros: vehicle.pros,
   cons: vehicle.cons,
 });
+
+  vehicle.variants = [
+    {
+      name: "Executive",
+      price: 1399000,
+      battery: "38 kWh",
+      range: "332 km",
+      power: "136 HP",
+      recommended: false,
+      features: [
+        "LED Headlamps",
+        "Automatic Climate Control",
+        "Rear Camera",
+        "Cruise Control",
+      ],
+    },
+    {
+      name: "Exclusive",
+      price: 1549000,
+      battery: "50 kWh",
+      range: "461 km",
+      power: "176 HP",
+      recommended: false,
+      features: [
+        "Panoramic Sunroof",
+        "Wireless Android Auto",
+        "Wireless Apple CarPlay",
+        "360° Camera",
+      ],
+    },
+    {
+      name: "Essence",
+      price: 1699000,
+      battery: "50 kWh",
+      range: "461 km",
+      power: "176 HP",
+      recommended: true,
+      features: [
+        "ADAS Level 2",
+        "Ventilated Seats",
+        "360° Camera",
+        "Premium Audio System",
+        "V2L Support",
+      ],
+    },
+  ];
 
   return (
     <>
@@ -90,37 +162,33 @@ console.log({
       <main className="min-h-screen bg-black text-white">
         <Hero vehicle={vehicle} />
 
-<div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
+        <div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
+          <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+            <div className="space-y-10">
+              <Specifications vehicle={vehicle} />
 
-  <div className="grid gap-8 lg:grid-cols-[1fr_320px]">
+              <BatteryChargingSection vehicle={vehicle} />
 
-    <div className="space-y-10">
+              <ChargingCostCalculator vehicle={vehicle} />
 
-      <Specifications vehicle={vehicle} />
+              <Performance vehicle={vehicle} />
 
-      <BatteryChargingSection vehicle={vehicle} />
+              {/* <Variants vehicle={vehicle} /> */}
 
-      <ChargingCostCalculator vehicle={vehicle} />
+              <VariantsTimeline vehicle={vehicle} />
 
-      <Performance vehicle={vehicle} />
+              <Features vehicle={vehicle} />
 
-      {/* <Variants vehicle={vehicle} /> */}
+              <Gallery vehicle={vehicle} />
 
-      <VariantsTimeline vehicle={vehicle} />
+              <ProsCons vehicle={vehicle} />
 
-      <Features vehicle={vehicle} />
+              <FAQ faqs={vehicle.faqs} />
+            </div>
 
-      <Gallery vehicle={vehicle} />
-
-      <ProsCons vehicle={vehicle} />
-
-    </div>
-
-    <Sidebar vehicle={vehicle} />
-
-  </div>
-
-</div>
+            <Sidebar vehicle={vehicle} />
+          </div>
+        </div>
       </main>
       <Footer />
     </>
