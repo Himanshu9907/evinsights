@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Heart } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -48,12 +49,40 @@ export default function Navbar() {
         </div>
 
         {/* Search Bar */}
-        <Link
+        {/* <Link
           href="/search"
           className="hidden md:flex items-center justify-center w-10 h-10 rounded-full border border-zinc-700 hover:border-green-500 transition"
         >
           <Search size={18} />
-        </Link>
+        </Link> */}
+
+        {/* Right Icons */}
+<div className="hidden md:flex items-center gap-3">
+
+  {/* Saved Cars */}
+  <Link
+    href="/saved"
+    className="relative flex items-center justify-center w-10 h-10 rounded-full border border-zinc-700 hover:border-red-500 transition"
+  >
+    <Heart size={18} />
+
+    <span
+      id="saved-count"
+      className="absolute -top-2 -right-2 h-5 w-5 rounded-full bg-red-500 text-[10px] font-bold flex items-center justify-center"
+    >
+      0
+    </span>
+  </Link>
+
+  {/* Search */}
+  <Link
+    href="/search"
+    className="flex items-center justify-center w-10 h-10 rounded-full border border-zinc-700 hover:border-green-500 transition"
+  >
+    <Search size={18} />
+  </Link>
+
+</div>
 
         {/* Mobile Hamburger */}
         <button

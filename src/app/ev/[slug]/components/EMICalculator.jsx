@@ -33,6 +33,7 @@ export default function EMICalculator({ vehicle }) {
   }, [loanAmount, interest, years]);
 
   return (
+    <section id="emi">
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
 
       <div className="flex items-center gap-3">
@@ -176,5 +177,6 @@ export default function EMICalculator({ vehicle }) {
       </div>
 
     </div>
+    </section>
   );
 }

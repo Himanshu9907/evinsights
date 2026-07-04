@@ -107,7 +107,7 @@ import { BatteryCharging, PlugZap } from "lucide-react";
 
 export default function BatteryChargingSection({ vehicle }) {
   return (
-    <section className="mt-14">
+    <section id="battery" className="mt-14">
 
       {/* Header */}
 

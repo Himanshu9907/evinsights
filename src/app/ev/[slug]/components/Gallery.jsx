@@ -9,7 +9,7 @@ export default function Gallery({ vehicle }) {
   if (!vehicle?.gallery?.length) return null;
 
   return (
-    <section className="mt-14">
+    <section id="gallery"className="mt-14">
 
       {/* Header */}
 

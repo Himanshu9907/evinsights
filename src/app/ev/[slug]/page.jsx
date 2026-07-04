@@ -18,81 +18,58 @@ import FAQ from "./components/FAQ";
 import VehicleSidebar from "./components/VehicleSidebar";
 import EMICalculator from "./components/EMICalculator";
 
+
 export default async function EVDetailPage({ params }) {
   const { slug } = await params;
 
-  // const vehicle = await prisma.eVModel.findUnique({
-  //   where: {
-  //     slug,
-  //   },
-  //   include: {
-  //     brand: true,
-  //   },
-  // });
-
-// const vehicle = await prisma.eVModel.findUnique({
-//   where: {
-//     slug,
-//   },
-//   include: {
-//     brand: true,
-//     faqs: {
-//       orderBy: {
-//         order: "asc",
-//       },
-//     },
-//   },
-// });
-
-
-const vehicle = await prisma.eVModel.findUnique({
-  where: {
-    slug,
-  },
-  include: {
-    brand: true,
-
-    faqs: {
-      orderBy: {
-        order: "asc",
-      },
+  const vehicle = await prisma.eVModel.findUnique({
+    where: {
+      slug,
     },
+    include: {
+      brand: true,
 
-    features: {
-      orderBy: {
-        order: "asc",
+      faqs: {
+        orderBy: {
+          order: "asc",
+        },
       },
-    },
 
-    gallery: {
-      orderBy: {
-        order: "asc",
+      features: {
+        orderBy: {
+          order: "asc",
+        },
       },
-    },
 
-    pros: {
-      orderBy: {
-        order: "asc",
+      gallery: {
+        orderBy: {
+          order: "asc",
+        },
       },
-    },
 
-    cons: {
-      orderBy: {
-        order: "asc",
+      pros: {
+        orderBy: {
+          order: "asc",
+        },
       },
+
+      cons: {
+        orderBy: {
+          order: "asc",
+        },
+      },
+
+      colors: true,
+      specs: true,
+      variants: true,
+      safety: true,
+      charging: true,
+      performance: true,
+      ownership: true,
     },
+  });
 
-    colors: true,
-    specs: true,
-    variants: true,
-    safety: true,
-    charging: true,
-    performance: true,
-    ownership: true,
-  },
-});
-
-// console.log(vehicle.faqs);
+  // console.log(vehicle.faqs);
 
   // console.log({
   //   features: vehicle.features,
@@ -106,11 +83,11 @@ const vehicle = await prisma.eVModel.findUnique({
   }
 
   console.log({
-  features: vehicle.features,
-  gallery: vehicle.gallery,
-  pros: vehicle.pros,
-  cons: vehicle.cons,
-});
+    features: vehicle.features,
+    gallery: vehicle.gallery,
+    pros: vehicle.pros,
+    cons: vehicle.cons,
+  });
 
   vehicle.variants = [
     {
@@ -158,6 +135,23 @@ const vehicle = await prisma.eVModel.findUnique({
     },
   ];
 
+  const similarEVs = await prisma.eVModel.findMany({
+    where: {
+      brandId: vehicle.brandId,
+      NOT: {
+        slug: vehicle.slug,
+      },
+    },
+    select: {
+      name: true,
+      slug: true,
+      image: true,
+      exShowroomPrice: true,
+      claimedRange: true,
+    },
+    take: 3,
+  });
+
   return (
     <>
       <Navbar />
@@ -196,42 +190,44 @@ const vehicle = await prisma.eVModel.findUnique({
         </div> */}
 
         <div className="mx-auto mt-2 max-w-7xl px-4 md:px-6">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <div className="space-y-10 lg:col-span-8">
+              <Specifications vehicle={vehicle} />
 
-  <div className="grid gap-8 lg:grid-cols-12">
+              <BatteryChargingSection vehicle={vehicle} />
 
-    <div className="space-y-10 lg:col-span-8">
+              <ChargingCostCalculator vehicle={vehicle} />
 
-      <Specifications vehicle={vehicle} />
+              <Performance vehicle={vehicle} />
 
-      <BatteryChargingSection vehicle={vehicle} />
+              <Variants vehicle={vehicle} />
 
-      <ChargingCostCalculator vehicle={vehicle} />
+              <EMICalculator vehicle={vehicle} />
 
-      <Performance vehicle={vehicle} />
+              <Features vehicle={vehicle} />
 
-      <Variants vehicle={vehicle} />
+              <Gallery vehicle={vehicle} />
 
-      <EMICalculator vehicle={vehicle} />
+              <ProsCons vehicle={vehicle} />
 
-      <Features vehicle={vehicle} />
+              <FAQ vehicle={vehicle} />
+            </div>
 
-      <Gallery vehicle={vehicle} />
+            {/* <div className="hidden lg:block lg:col-span-4">
 
-      <ProsCons vehicle={vehicle} />
+      <VehicleSidebar
+  vehicle={vehicle}
+  similarEVs={similarEVs}
+/>
 
-      <FAQ vehicle={vehicle} />
+    </div> */}
 
-    </div>
-
-    <div className="hidden lg:block lg:col-span-4">
-
-      <VehicleSidebar vehicle={vehicle} />
-
-    </div>
-
-  </div>
-
-</div>
+            {/* <div className="block lg:block"> */}
+            <div className="w-full lg:col-span-4">
+              <VehicleSidebar vehicle={vehicle} similarEVs={similarEVs} />
+            </div>
+          </div>
+        </div>
       </main>
       <Footer />
     </>

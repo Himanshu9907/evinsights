@@ -55,7 +55,7 @@ export default function Specifications({ vehicle }) {
   ];
 
   return (
-    <section className="mt-0">
+    <section id="specifications" className="mt-0">
 
       {/* Header */}
 
