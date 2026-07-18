@@ -12,21 +12,23 @@ datasource db {
 //////////////////////////////////////////////////////
 
 model User {
-  id String @id @default(cuid())
 
-  name String
+  id        String   @id @default(cuid())
 
-  email String @unique
+  name      String
 
-  password String
+  email     String   @unique
 
-  role String @default("USER")
+  password  String
+
+  role      String   @default("USER")
 
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
 
-  articles Article[]
+  articles  Article[]
+
 }
 
 //////////////////////////////////////////////////////
@@ -34,17 +36,19 @@ model User {
 //////////////////////////////////////////////////////
 
 model Category {
-  id String @id @default(cuid())
 
-  name String
+  id        String   @id @default(cuid())
 
-  slug String @unique
+  name      String
+
+  slug      String   @unique
 
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
 
-  articles Article[]
+  articles  Article[]
+
 }
 
 //////////////////////////////////////////////////////
@@ -52,53 +56,54 @@ model Category {
 //////////////////////////////////////////////////////
 
 model Article {
-  id String @id @default(cuid())
+  id          String   @id @default(cuid())
 
-  title String
+  title       String
+  slug        String   @unique
 
-  slug String @unique
+  excerpt     String
+  content     String
 
-  excerpt String
+  image       String?
 
-  content String
+  published   Boolean  @default(false)
 
-  image String?
+  authorId    String
+  categoryId  String
 
-  published Boolean @default(false)
+  keyPoints   String[] @default([])
+  pros        String[] @default([])
+  cons        String[] @default([])
+  faqs        Json?
 
-  authorId String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-  categoryId String
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
-
-  author User @relation(fields: [authorId], references: [id])
-
-  category Category @relation(fields: [categoryId], references: [id])
+  author      User      @relation(fields: [authorId], references: [id])
+  category    Category  @relation(fields: [categoryId], references: [id])
 }
-
 //////////////////////////////////////////////////////
 // BRAND
 //////////////////////////////////////////////////////
 
 model EVBrand {
-  id String @id @default(cuid())
 
-  name String @unique
+  id          String   @id @default(cuid())
 
-  slug String @unique
+  name        String   @unique
 
-  logo String?
+  slug        String   @unique
 
-  country String?
+  logo        String?
 
-  createdAt DateTime @default(now())
+  country     String?
 
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime @default(now())
 
-  models EVModel[]
+  updatedAt   DateTime @updatedAt
+
+  models      EVModel[]
+
 }
 
 //////////////////////////////////////////////////////
@@ -106,134 +111,139 @@ model EVBrand {
 //////////////////////////////////////////////////////
 
 model EVModel {
-  id String @id @default(cuid())
 
-  name String
+  id                 String   @id @default(cuid())
 
-  slug String @unique
+  name               String
 
-  image String?
+  slug               String   @unique
 
-  overview String?
+  image              String?
 
-  featured Boolean @default(false)
+  overview           String?
+
+  featured           Boolean  @default(false)
 
   //----------------------------------
   // Pricing
   //----------------------------------
 
-  exShowroomPrice Int?
+  exShowroomPrice    Int?
 
   //----------------------------------
   // Battery
   //----------------------------------
 
-  batteryKwh Float?
+  batteryKwh         Float?
 
-  batteryType String?
+  batteryType        String?
 
-  claimedRange Int?
+  claimedRange       Int?
 
-  realRange Int?
+  realRange          Int?
 
   //----------------------------------
   // Performance
   //----------------------------------
 
-  powerHp Int?
+  powerHp            Int?
 
-  torqueNm Int?
+  torqueNm           Int?
 
-  topSpeed Int?
+  topSpeed           Int?
 
-  acceleration Float?
+  acceleration       Float?
 
   //----------------------------------
   // Dimensions
   //----------------------------------
 
-  seating Int?
+  seating            Int?
 
-  bodyType String?
+  bodyType           String?
 
-  driveType String?
+  driveType          String?
 
-  lengthMm Int?
+  lengthMm           Int?
 
-  widthMm Int?
+  widthMm            Int?
 
-  heightMm Int?
+  heightMm           Int?
 
-  wheelbaseMm Int?
+  wheelbaseMm        Int?
 
-  bootSpace Int?
+  bootSpace          Int?
 
-  groundClearance Int?
+  groundClearance    Int?
 
   //----------------------------------
   // Charging
   //----------------------------------
 
-  acCharging String?
+  acCharging         String?
 
-  dcCharging String?
+  dcCharging         String?
 
-  chargingPort String?
+  chargingPort       String?
 
   //----------------------------------
   // Warranty
   //----------------------------------
 
-  warranty String?
+  warranty           String?
 
-  batteryWarranty String?
+  batteryWarranty    String?
 
-  launchDate String?
-
-  //----------------------------------
-
-  brandId String
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
+  launchDate         String?
 
   //----------------------------------
 
-  brand EVBrand @relation(fields: [brandId], references: [id])
+  brandId            String
+
+  createdAt          DateTime @default(now())
+
+  updatedAt          DateTime @updatedAt
+
+  //----------------------------------
+
+  brand EVBrand @relation(fields:[brandId],references:[id])
 
   //----------------------------------
   // Relations
   //----------------------------------
 
-  specs EVSpec[]
+  specs              EVSpec[]
 
-  variants EVVariant[]
+  variants           EVVariant[]
 
-  faqs EVFAQ[]
+  faqs               EVFAQ[]
 
-  features EVFeature[]
+  features           EVFeature[]
 
-  gallery EVGalleryImage[]
+  gallery            EVGalleryImage[]
 
-  colors EVColor[]
+  colors             EVColor[]
 
-  pros EVPro[]
+  pros               EVPro[]
 
-  cons EVCon[]
+  cons               EVCon[]
 
-  safety EVSafety?
+  safety             EVSafety?
 
-  charging EVCharging?
+  charging           EVCharging?
 
-  performance EVPerformance?
+  performance        EVPerformance?
 
-  ownership EVOwnership?
+  ownership          EVOwnership?
 
-  evreviews            EVReview[]
-  evrating             EVRating?
-  evnews               EVNews[]
-  evcomparisonVehicles EVComparisonVehicle[]
+  reviews             EVReview[]
+
+  ratings             EVRating[]
+
+  news                EVNews[]
+
+  comparisonVehicles  EVComparisonVehicle[]
+
 }
 
 //////////////////////////////////////////////////////
@@ -241,19 +251,21 @@ model EVModel {
 //////////////////////////////////////////////////////
 
 model EVSpec {
-  id String @id @default(cuid())
 
-  key String
+  id          String @id @default(cuid())
 
-  value String
+  key         String
 
-  category String?
+  value       String
 
-  order Int @default(0)
+  category    String?
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -261,31 +273,33 @@ model EVSpec {
 //////////////////////////////////////////////////////
 
 model EVVariant {
-  id String @id @default(cuid())
 
-  name String
+  id              String @id @default(cuid())
 
-  price Int?
+  name            String
 
-  battery String?
+  price           Int?
 
-  range Int?
+  battery         String?
 
-  power Int?
+  range           Int?
 
-  torque Int?
+  power           Int?
 
-  topSpeed Int?
+  torque          Int?
 
-  acceleration Float?
+  topSpeed        Int?
 
-  recommended Boolean @default(false)
+  acceleration    Float?
 
-  order Int @default(0)
+  recommended     Boolean @default(false)
 
-  modelId String
+  order           Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId         String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -293,19 +307,21 @@ model EVVariant {
 //////////////////////////////////////////////////////
 
 model EVFeature {
-  id String @id @default(cuid())
 
-  title String
+  id          String @id @default(cuid())
 
-  icon String?
+  title       String
 
-  category String?
+  icon        String?
 
-  order Int @default(0)
+  category    String?
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -313,19 +329,21 @@ model EVFeature {
 //////////////////////////////////////////////////////
 
 model EVGalleryImage {
-  id String @id @default(cuid())
 
-  image String
+  id          String @id @default(cuid())
 
-  caption String?
+  image       String
 
-  isPrimary Boolean @default(false)
+  caption     String?
 
-  order Int @default(0)
+  isPrimary   Boolean @default(false)
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -333,19 +351,21 @@ model EVGalleryImage {
 //////////////////////////////////////////////////////
 
 model EVColor {
-  id String @id @default(cuid())
 
-  name String
+  id          String @id @default(cuid())
 
-  hexCode String?
+  name        String
 
-  image String?
+  hexCode     String?
 
-  order Int @default(0)
+  image       String?
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -353,17 +373,19 @@ model EVColor {
 //////////////////////////////////////////////////////
 
 model EVFAQ {
-  id String @id @default(cuid())
 
-  question String
+  id          String @id @default(cuid())
 
-  answer String
+  question    String
 
-  order Int @default(0)
+  answer      String
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -371,15 +393,17 @@ model EVFAQ {
 //////////////////////////////////////////////////////
 
 model EVPro {
-  id String @id @default(cuid())
 
-  title String
+  id          String @id @default(cuid())
 
-  order Int @default(0)
+  title       String
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -387,15 +411,17 @@ model EVPro {
 //////////////////////////////////////////////////////
 
 model EVCon {
-  id String @id @default(cuid())
 
-  title String
+  id          String @id @default(cuid())
 
-  order Int @default(0)
+  title       String
 
-  modelId String
+  order       Int @default(0)
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId     String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -403,47 +429,49 @@ model EVCon {
 //////////////////////////////////////////////////////
 
 model EVSafety {
-  id String @id @default(cuid())
 
-  airbags Int?
+  id                  String @id @default(cuid())
 
-  adasLevel String?
+  airbags             Int?
 
-  ncapRating Int?
+  adasLevel           String?
 
-  abs Boolean?
+  ncapRating          Int?
 
-  ebd Boolean?
+  abs                 Boolean?
 
-  esc Boolean?
+  ebd                 Boolean?
 
-  tractionControl Boolean?
+  esc                 Boolean?
 
-  tpms Boolean?
+  tractionControl     Boolean?
 
-  hillHold Boolean?
+  tpms                Boolean?
 
-  hillDescent Boolean?
+  hillHold            Boolean?
 
-  isofix Boolean?
+  hillDescent         Boolean?
 
-  camera360 Boolean?
+  isofix              Boolean?
 
-  blindSpotMonitor Boolean?
+  camera360           Boolean?
 
-  parkingSensors String?
+  blindSpotMonitor    Boolean?
 
-  emergencyBraking Boolean?
+  parkingSensors      String?
 
-  laneKeepAssist Boolean?
+  emergencyBraking    Boolean?
 
-  adaptiveCruise Boolean?
+  laneKeepAssist      Boolean?
 
-  driverDrowsiness Boolean?
+  adaptiveCruise      Boolean?
 
-  modelId String @unique
+  driverDrowsiness    Boolean?
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId             String @unique
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -451,33 +479,35 @@ model EVSafety {
 //////////////////////////////////////////////////////
 
 model EVCharging {
-  id String @id @default(cuid())
 
-  homeChargerPower String?
+  id                  String @id @default(cuid())
 
-  homeChargingTime String?
+  homeChargerPower    String?
 
-  dcFastChargePower String?
+  homeChargingTime    String?
 
-  dcChargingTime String?
+  dcFastChargePower   String?
 
-  chargingPort String?
+  dcChargingTime      String?
 
-  chargerIncluded Boolean?
+  chargingPort        String?
 
-  portableCharger Boolean?
+  chargerIncluded     Boolean?
 
-  wallBoxCharger Boolean?
+  portableCharger     Boolean?
 
-  v2l Boolean?
+  wallBoxCharger      Boolean?
 
-  v2v Boolean?
+  v2l                 Boolean?
+
+  v2v                 Boolean?
 
   batteryPreCondition Boolean?
 
-  modelId String @unique
+  modelId             String @unique
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -485,31 +515,35 @@ model EVCharging {
 //////////////////////////////////////////////////////
 
 model EVPerformance {
-  id String @id @default(cuid())
 
-  zeroToHundred Float?
+  id                  String @id @default(cuid())
 
-  powerToWeight Float?
+  zeroToHundred       Float?
 
-  driveModes String?
+  topSpeed            Int?
 
-  regenLevels Int?
+  powerToWeight       Float?
 
-  suspensionFront String?
+  driveModes          String?
 
-  suspensionRear String?
+  regenLevels         Int?
 
-  turningRadius Float?
+  suspensionFront     String?
 
-  motorType String?
+  suspensionRear      String?
 
-  maxPower String?
+  turningRadius       Float?
 
-  maxTorque String?
+  motorType           String?
 
-  modelId String @unique
+  maxPower            String?
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  maxTorque           String?
+
+  modelId             String @unique
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -517,29 +551,31 @@ model EVPerformance {
 //////////////////////////////////////////////////////
 
 model EVOwnership {
-  id String @id @default(cuid())
 
-  serviceInterval String?
+  id                  String @id @default(cuid())
 
-  yearlyServiceCost Int?
+  serviceInterval     String?
 
-  insuranceCost Int?
+  yearlyServiceCost   Int?
+
+  insuranceCost       Int?
 
   batteryReplacementCost Int?
 
-  roadsideAssistance Boolean?
+  roadsideAssistance  Boolean?
 
-  warrantyYears Int?
+  warrantyYears       Int?
 
-  warrantyKm Int?
+  warrantyKm          Int?
 
-  resaleRating Float?
+  resaleRating        Float?
 
-  maintenanceRating Float?
+  maintenanceRating   Float?
 
-  modelId String @unique
+  modelId             String @unique
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -547,23 +583,25 @@ model EVOwnership {
 //////////////////////////////////////////////////////
 
 model EVReview {
-  id String @id @default(cuid())
 
-  userName String
+  id          String @id @default(cuid())
 
-  title String?
+  userName    String
 
-  review String
+  title       String?
 
-  rating Float
+  review      String
 
-  verified Boolean @default(false)
+  rating      Float
 
-  createdAt DateTime @default(now())
+  verified    Boolean @default(false)
 
-  modelId String
+  createdAt   DateTime @default(now())
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId      String
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -571,27 +609,29 @@ model EVReview {
 //////////////////////////////////////////////////////
 
 model EVRating {
-  id String @id @default(cuid())
 
-  overall Float?
+  id              String @id @default(cuid())
 
-  safety Float?
+  overall         Float?
 
-  performance Float?
+  safety          Float?
 
-  comfort Float?
+  performance     Float?
 
-  features Float?
+  comfort         Float?
 
-  valueForMoney Float?
+  features        Float?
 
-  charging Float?
+  valueForMoney   Float?
 
-  verdict String?
+  charging        Float?
 
-  modelId String @unique
+  verdict         String?
 
-  model EVModel @relation(fields: [modelId], references: [id], onDelete: Cascade)
+  modelId         String @unique
+
+  model EVModel @relation(fields:[modelId],references:[id], onDelete: Cascade)
+
 }
 
 //////////////////////////////////////////////////////
@@ -599,57 +639,63 @@ model EVRating {
 //////////////////////////////////////////////////////
 
 model EVNews {
-  id String @id @default(cuid())
 
-  title String
+  id          String   @id @default(cuid())
 
-  slug String @unique
+  title       String
 
-  excerpt String
+  slug        String   @unique
 
-  content String
+  excerpt     String
 
-  image String?
+  content     String
 
-  published Boolean @default(true)
+  image       String?
 
-  createdAt DateTime @default(now())
+  published   Boolean  @default(true)
 
-  updatedAt DateTime @updatedAt
+  createdAt   DateTime @default(now())
 
-  modelId String?
+  updatedAt   DateTime @updatedAt
 
-  model EVModel? @relation(fields: [modelId], references: [id], onDelete: SetNull)
+  modelId     String?
+
+  model       EVModel? @relation(fields:[modelId], references:[id], onDelete: SetNull)
+
 }
 
 model EVComparison {
-  id String @id @default(cuid())
 
-  title String
+  id          String   @id @default(cuid())
 
-  slug String @unique
+  title       String
+
+  slug        String   @unique
 
   description String?
 
-  featured Boolean @default(false)
+  featured    Boolean  @default(false)
 
-  createdAt DateTime @default(now())
+  createdAt   DateTime @default(now())
 
-  updatedAt DateTime @updatedAt
+  updatedAt   DateTime @updatedAt
 
-  vehicles EVComparisonVehicle[]
+  vehicles    EVComparisonVehicle[]
+
 }
 
 model EVComparisonVehicle {
-  id String @id @default(cuid())
 
-  comparisonId String
+  id              String @id @default(cuid())
 
-  vehicleId String
+  comparisonId    String
 
-  order Int
+  vehicleId        String
 
-  comparison EVComparison @relation(fields: [comparisonId], references: [id], onDelete: Cascade)
+  order           Int
 
-  vehicle EVModel @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  comparison EVComparison @relation(fields:[comparisonId], references:[id], onDelete: Cascade)
+
+  vehicle EVModel @relation(fields:[vehicleId], references:[id], onDelete: Cascade)
+
 }

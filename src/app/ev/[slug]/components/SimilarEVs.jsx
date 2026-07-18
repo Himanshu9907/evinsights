@@ -30,7 +30,7 @@ export default function SimilarEVs({ vehicle }) {
   ].filter((car) => car.slug !== vehicle.slug);
 
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6 mb-10">
 
       <div className="mb-5 flex items-center justify-between">
 

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 html,
 body {
@@ -54,7 +54,161 @@ body {
 .prose table td {
   border: 1px solid #27272a;
   padding: 12px;
+} */
+
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ========================= */
+/* LIGHT THEME (Default) */
+/* ========================= */
+
+:root {
+  --background: #ffffff;
+  --foreground: #111827;
+
+  --card: #f8fafc;
+  --card-foreground: #111827;
+
+  --border: #e5e7eb;
+
+  --muted: #6b7280;
+
+  --primary: #22c55e;
+  --primary-hover: #16a34a;
+
+  --shadow: rgba(0, 0, 0, 0.08);
 }
+
+/* ========================= */
+/* DARK THEME */
+/* ========================= */
+
+html.dark {
+  --background: #09090b;
+  --foreground: #ffffff;
+
+  --card: #18181b;
+  --card-foreground: #ffffff;
+
+  --border: #27272a;
+
+  --muted: #a1a1aa;
+
+  --primary: #22c55e;
+  --primary-hover: #16a34a;
+
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* body { */
+  /* margin: 0;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  transition:
+    background-color .35s ease,
+    color .35s ease; */
+
+    /* background-color: var(--background);
+      color: var(--foreground);
+    
+      transition:
+        background-color .35s,
+        color .35s;
+} */
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+/* ========================= */
+/* SCROLLBAR */
+/* ========================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #22c55e;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #16a34a;
+}
+
+/* ========================= */
+/* TEXT SELECTION */
+/* ========================= */
+
+::selection {
+  background: #22c55e;
+  color: white;
+}
+
+/* ========================= */
+/* REUSABLE UTILITIES */
+/* ========================= */
+
+.bg-background {
+  background: var(--background);
+}
+
+.bg-card {
+  background: var(--card);
+}
+
+.text-foreground {
+  color: var(--foreground);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.border-theme {
+  border-color: var(--border);
+}
+
+.shadow-theme {
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+/* Hide Scrollbar */
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
 
 /* .ev-filter {
   @apply w-full appearance-none rounded-lg border border-zinc-700 bg-zinc-800 py-3 pl-10 pr-10 text-sm text-white outline-none transition-all duration-300 hover:border-green-500 focus:border-green-500 focus:ring-2 focus:ring-green-500/20;
@@ -96,3 +250,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 } */
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
