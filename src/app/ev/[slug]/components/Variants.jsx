@@ -283,7 +283,7 @@ export default function Variants({ vehicle }) {
 
             {/* Buttons */}
 
-            <div className="mt-6 flex flex-wrap gap-3">
+            {/* <div className="mt-6 flex flex-wrap gap-3">
 
               <button
                 className="
@@ -320,7 +320,7 @@ export default function Variants({ vehicle }) {
                 Compare Variant
               </button>
 
-            </div>
+            </div> */}
 
           </div>
 

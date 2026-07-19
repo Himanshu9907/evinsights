@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import {
   ArrowLeftRight,
   Car,
@@ -25,6 +26,15 @@ const [car2, setCar2] = useState(null);
     : ""
 );
   const [search2, setSearch2] = useState("");
+
+  useEffect(() => {
+  if (defaultCar1) {
+    setCar1(defaultCar1);
+    setSearch1(
+      `${defaultCar1.brand.name} ${defaultCar1.name}`
+    );
+  }
+}, [defaultCar1]);
 
   const filterCars = (query, oppositeCar) => {
     if (!query.trim()) return [];
