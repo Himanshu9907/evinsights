@@ -718,4 +718,632 @@ variants: [
   },
 
 },
+
+{
+  // ======================================================
+  // BASIC INFO
+  // ======================================================
+
+  brand: "Tata",
+
+  name: "Sierra.ev",
+
+  slug: "tata-sierra-ev",
+
+  image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566858/image1_qhqpw6.png",
+
+  featured: true,
+
+  overview:
+    "The Tata Sierra.ev is Tata Motors' flagship premium electric SUV built on the Acti.ev+ architecture. It offers premium technology, long driving range, advanced safety features, connected car technology and fast charging capability.",
+
+  // ======================================================
+  // PRICING
+  // ======================================================
+
+  pricing: {
+    exShowroomPrice: null,
+  },
+
+  // ======================================================
+  // BATTERY
+  // ======================================================
+
+  battery: {
+
+    batteryKwh: 75,
+
+    batteryType: "Liquid Cooled Lithium-ion Battery",
+
+    claimedRange: 665,
+
+    realRange: null,
+
+  },
+
+  // ======================================================
+  // PERFORMANCE
+  // ======================================================
+
+  performance: {
+
+    zeroToHundred: null,
+
+    topSpeed: null,
+
+    motorType: null,
+
+    maxPower: null,
+
+    maxTorque: null,
+
+    driveModes: null,
+
+    regenLevels: null,
+
+  },
+
+  // ======================================================
+  // DIMENSIONS
+  // ======================================================
+
+  dimensions: {
+
+    seating: 5,
+
+    bodyType: "Electric SUV",
+
+    driveType: "RWD",
+
+    lengthMm: null,
+
+    widthMm: null,
+
+    heightMm: null,
+
+    wheelbaseMm: null,
+
+    bootSpace: 622,
+
+    groundClearance: 205,
+
+  },
+
+  // ======================================================
+  // CHARGING
+  // ======================================================
+
+  charging: {
+
+    homeChargerPower: null,
+
+    homeChargingTime: "10.5 Hours",
+
+    dcFastChargePower: null,
+
+    dcChargingTime: "20% - 80% in approximately 25 minutes",
+
+    chargingPort: "CCS2",
+
+    chargerIncluded: null,
+
+    portableCharger: null,
+
+    wallBoxCharger: null,
+
+    v2l: true,
+
+    v2v: true,
+
+    batteryPreCondition: null,
+
+  },
+
+  // ======================================================
+  // WARRANTY
+  // ======================================================
+
+  warranty: {
+
+    vehicleWarranty: "3 Years / 1,25,000 km",
+
+    batteryWarranty: "Lifetime Warranty (Private Owner)",
+
+    launchDate: "2026",
+
+  },
+    // ======================================================
+  // SPECIFICATIONS
+  // ======================================================
+
+  specs: [
+
+    // =========================
+    // Battery
+    // =========================
+
+    {
+      key: "Battery Capacity",
+      value: "75 kWh",
+      category: "Battery",
+    },
+
+    {
+      key: "Battery Type",
+      value: "Liquid Cooled Lithium-ion Battery",
+      category: "Battery",
+    },
+
+    {
+      key: "Claimed Range",
+      value: "665 km",
+      category: "Battery",
+    },
+
+    // =========================
+    // Dimensions
+    // =========================
+
+    {
+      key: "Seating Capacity",
+      value: "5",
+      category: "Dimensions",
+    },
+
+    {
+      key: "Boot Space",
+      value: "622 L",
+      category: "Dimensions",
+    },
+
+    {
+      key: "Ground Clearance",
+      value: "205 mm",
+      category: "Dimensions",
+    },
+
+    // =========================
+    // Charging
+    // =========================
+
+    {
+      key: "Charging Time",
+      value: "20% - 80% in approximately 25 minutes",
+      category: "Charging",
+    },
+
+    {
+      key: "Charging Port",
+      value: "CCS2",
+      category: "Charging",
+    },
+
+    {
+      key: "V2L",
+      value: "Supported",
+      category: "Charging",
+    },
+
+    {
+      key: "V2V",
+      value: "Supported",
+      category: "Charging",
+    },
+
+    // =========================
+    // Warranty
+    // =========================
+
+    {
+      key: "Vehicle Warranty",
+      value: "3 Years / 1,25,000 km",
+      category: "Warranty",
+    },
+
+    {
+      key: "Battery Warranty",
+      value: "Lifetime Warranty (Private Owner)",
+      category: "Warranty",
+    },
+
+  ],
+    // ======================================================
+  // VARIANTS
+  // ======================================================
+
+  variants: [
+
+    {
+      name: "Adventure 65",
+
+      price: null,
+
+      battery: "65 kWh",
+
+      range: null,
+
+      power: null,
+
+      torque: null,
+
+      topSpeed: null,
+
+      acceleration: null,
+
+      recommended: false,
+    },
+
+    {
+      name: "Adventure 75",
+
+      price: null,
+
+      battery: "75 kWh",
+
+      range: null,
+
+      power: null,
+
+      torque: null,
+
+      topSpeed: null,
+
+      acceleration: null,
+
+      recommended: false,
+    },
+
+    {
+      name: "Adventure S 75",
+
+      price: null,
+
+      battery: "75 kWh",
+
+      range: null,
+
+      power: null,
+
+      torque: null,
+
+      topSpeed: null,
+
+      acceleration: null,
+
+      recommended: false,
+    },
+
+    {
+      name: "Accomplished 75",
+
+      price: null,
+
+      battery: "75 kWh",
+
+      range: null,
+
+      power: null,
+
+      torque: null,
+
+      topSpeed: null,
+
+      acceleration: null,
+
+      recommended: true,
+    },
+
+    {
+      name: "Accomplished + 75",
+
+      price: null,
+
+      battery: "75 kWh",
+
+      range: null,
+
+      power: null,
+
+      torque: null,
+
+      topSpeed: null,
+
+      acceleration: null,
+
+      recommended: false,
+    },
+
+  ],
+
+  // ======================================================
+  // FEATURES
+  // ======================================================
+
+  features: [
+
+    {
+      title: "Triple Screen Dashboard",
+      category: "Infotainment",
+    },
+
+    {
+      title: "Harman Infotainment System",
+      category: "Infotainment",
+    },
+
+    {
+      title: "Wireless Android Auto",
+      category: "Infotainment",
+    },
+
+    {
+      title: "Wireless Apple CarPlay",
+      category: "Infotainment",
+    },
+
+    {
+      title: "Connected Car Technology",
+      category: "Connected",
+    },
+
+    {
+      title: "Level 2 ADAS",
+      category: "Safety",
+    },
+
+    {
+      title: "Panoramic Sunroof",
+      category: "Comfort",
+    },
+
+    {
+      title: "Ventilated Front Seats",
+      category: "Comfort",
+    },
+
+    {
+      title: "Wireless Phone Charger",
+      category: "Comfort",
+    },
+
+    {
+      title: "360 Degree Camera",
+      category: "Safety",
+    },
+
+    {
+      title: "Vehicle-to-Load (V2L)",
+      category: "EV Technology",
+    },
+
+    {
+      title: "Vehicle-to-Vehicle (V2V)",
+      category: "EV Technology",
+    },
+
+  ],
+    // ======================================================
+  // GALLERY
+  // ======================================================
+
+  gallery: [
+
+    {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566858/image1_qhqpw6.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+    {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566864/image22_p60swn.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+     {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566863/image21_fzbc3l.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+     {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566862/image20_g4v0pj.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+     {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566862/image19_dwx1cm.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+     {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566861/image15_a1vg0e.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+
+     {
+      image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784566860/image13_o8rfnq.png",
+      // caption: "Front View",
+      isPrimary: true,
+    },
+  ],
+
+  // ======================================================
+  // COLORS
+  // ======================================================
+
+  colors: [
+
+    // Official colour names were not specified in the brochure.
+
+  ],
+
+  // ======================================================
+  // FAQS
+  // ======================================================
+
+  faqs: [
+
+    {
+      question: "What battery pack options are available in the Tata Sierra.ev?",
+      answer:
+        "The Tata Sierra.ev will be offered with multiple battery pack options, including a 75 kWh battery pack.",
+    },
+
+    {
+      question: "What is the claimed driving range of the Tata Sierra.ev?",
+      answer:
+        "The Tata Sierra.ev offers a claimed driving range of up to 665 km.",
+    },
+
+    {
+      question: "Does the Tata Sierra.ev support fast charging?",
+      answer:
+        "Yes. It supports DC fast charging and can charge from 20% to 80% in approximately 25 minutes.",
+    },
+
+    {
+      question: "Does the Tata Sierra.ev support V2L and V2V?",
+      answer:
+        "Yes. It supports both Vehicle-to-Load (V2L) and Vehicle-to-Vehicle (V2V) functionality.",
+    },
+
+  ],
+
+  // ======================================================
+  // PROS
+  // ======================================================
+
+  pros: [
+
+    {
+      title: "Up to 665 km claimed driving range",
+    },
+
+    {
+      title: "Fast DC charging support",
+    },
+
+    {
+      title: "Premium connected technology",
+    },
+
+    {
+      title: "V2L and V2V functionality",
+    },
+
+  ],
+
+  // ======================================================
+  // CONS
+  // ======================================================
+
+  cons: [
+
+    // No official disadvantages mentioned in the brochure.
+
+  ],
+
+  // ======================================================
+  // SAFETY
+  // ======================================================
+
+  safety: {
+
+    airbags: null,
+
+    adasLevel: "Level 2",
+
+    ncapRating: null,
+
+    abs: null,
+
+    ebd: null,
+
+    esc: null,
+
+    tractionControl: null,
+
+    tpms: null,
+
+    hillHold: null,
+
+    hillDescent: null,
+
+    isofix: null,
+
+    camera360: true,
+
+    blindSpotMonitor: null,
+
+    parkingSensors: null,
+
+    emergencyBraking: null,
+
+    laneKeepAssist: null,
+
+    adaptiveCruise: null,
+
+    driverDrowsiness: null,
+
+  },
+
+  // ======================================================
+  // OWNERSHIP
+  // ======================================================
+
+  ownership: {
+
+    serviceInterval: null,
+
+    yearlyServiceCost: null,
+
+    insuranceCost: null,
+
+    batteryReplacementCost: null,
+
+    roadsideAssistance: null,
+
+    warrantyYears: 3,
+
+    warrantyKm: 125000,
+
+    resaleRating: null,
+
+    maintenanceRating: null,
+
+  },
+
+  // ======================================================
+  // RATING
+  // ======================================================
+
+  rating: {
+
+    overall: null,
+
+    safety: null,
+
+    performance: null,
+
+    comfort: null,
+
+    features: null,
+
+    valueForMoney: null,
+
+    charging: null,
+
+    verdict: null,
+
+  },
+
+},
+
+
+
+  
 ];
