@@ -12,9 +12,23 @@ import {
   Trophy,
 } from "lucide-react";
 
-function formatPrice(price) {
-  if (!price) return "N/A";
-  return `₹${(price / 100000).toFixed(2)} Lakh`;
+// function formatPrice(price) {
+//   if (!price) return "N/A";
+//   return `₹${(price / 100000).toFixed(2)} Lakh`;
+// }
+
+function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
 }
 
 export default function HeroComparison({ comparison }) {
@@ -306,10 +320,13 @@ function CarCard({ car, formatPrice }) {
       <div className="mt-8 grid gap-4">
 
         <Spec
-          icon={<IndianRupee size={18} />}
-          label="Price"
-          value={formatPrice(car.exShowroomPrice)}
-        />
+  icon={<IndianRupee size={18} />}
+  label="Price"
+  value={formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+/>
 
         <Spec
           icon={<BatteryCharging size={18} />}

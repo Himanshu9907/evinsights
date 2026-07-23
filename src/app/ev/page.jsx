@@ -443,13 +443,21 @@ export default async function EVPage({ searchParams }) {
         }
       : {}),
 
+    // ...(price
+    //   ? {
+    //       exShowroomPrice: {
+    //         lte: Number(price) * 100000,
+    //       },
+    //     }
+    //   : {}),
+
     ...(price
-      ? {
-          exShowroomPrice: {
-            lte: Number(price) * 100000,
-          },
-        }
-      : {}),
+  ? {
+      startingPrice: {
+        lte: Number(price) * 100000,
+      },
+    }
+  : {}),
 
     ...(range
       ? {
@@ -502,30 +510,55 @@ export default async function EVPage({ searchParams }) {
 
     skip,
 
+    // orderBy:
+    //   sort === "price-asc"
+    //     ? {
+    //         exShowroomPrice: "asc",
+    //       }
+    //     : sort === "price-desc"
+    //     ? {
+    //         exShowroomPrice: "desc",
+    //       }
+    //     : sort === "range-desc"
+    //     ? {
+    //         claimedRange: "desc",
+    //       }
+    //     : sort === "battery-desc"
+    //     ? {
+    //         batteryKwh: "desc",
+    //       }
+    //     : sort === "newest"
+    //     ? {
+    //         launchDate: "desc",
+    //       }
+    //     : {
+    //         exShowroomPrice: "asc",
+    //       },
+
     orderBy:
-      sort === "price-asc"
-        ? {
-            exShowroomPrice: "asc",
-          }
-        : sort === "price-desc"
-        ? {
-            exShowroomPrice: "desc",
-          }
-        : sort === "range-desc"
-        ? {
-            claimedRange: "desc",
-          }
-        : sort === "battery-desc"
-        ? {
-            batteryKwh: "desc",
-          }
-        : sort === "newest"
-        ? {
-            launchDate: "desc",
-          }
-        : {
-            exShowroomPrice: "asc",
-          },
+  sort === "price-asc"
+    ? {
+        startingPrice: "asc",
+      }
+    : sort === "price-desc"
+    ? {
+        startingPrice: "desc",
+      }
+    : sort === "range-desc"
+    ? {
+        claimedRange: "desc",
+      }
+    : sort === "battery-desc"
+    ? {
+        batteryKwh: "desc",
+      }
+    : sort === "newest"
+    ? {
+        launchDate: "desc",
+      }
+    : {
+        startingPrice: "asc",
+      },
   });
 
   // ==========================================

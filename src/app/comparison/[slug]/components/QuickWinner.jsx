@@ -9,9 +9,23 @@ import {
   Crown,
 } from "lucide-react";
 
-function formatPrice(price) {
-  if (!price) return "N/A";
-  return `₹${(price / 100000).toFixed(2)} Lakh`;
+// function formatPrice(price) {
+//   if (!price) return "N/A";
+//   return `₹${(price / 100000).toFixed(2)} Lakh`;
+// }
+
+function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
 }
 
 export default function QuickWinner({ comparison }) {
@@ -19,16 +33,36 @@ export default function QuickWinner({ comparison }) {
 
   const { car1, car2 } = comparison;
 
+  // const compareItems = [
+  //   {
+  //     title: "Price",
+  //     icon: <IndianRupee size={18} />,
+  //     value1: car1.exShowroomPrice || 0,
+  //     value2: car2.exShowroomPrice || 0,
+  //     display1: formatPrice(car1.exShowroomPrice),
+  //     display2: formatPrice(car2.exShowroomPrice),
+  //     higherBetter: false,
+  //   },
+
   const compareItems = [
-    {
-      title: "Price",
-      icon: <IndianRupee size={18} />,
-      value1: car1.exShowroomPrice || 0,
-      value2: car2.exShowroomPrice || 0,
-      display1: formatPrice(car1.exShowroomPrice),
-      display2: formatPrice(car2.exShowroomPrice),
-      higherBetter: false,
-    },
+  {
+    title: "Price",
+    icon: <IndianRupee size={18} />,
+    value1: car1.startingPrice || 0,
+    value2: car2.startingPrice || 0,
+
+    display1: formatPrice(
+      car1.startingPrice,
+      car1.endingPrice
+    ),
+
+    display2: formatPrice(
+      car2.startingPrice,
+      car2.endingPrice
+    ),
+
+    higherBetter: false,
+  },
 
     {
       title: "Battery",

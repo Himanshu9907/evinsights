@@ -409,6 +409,21 @@ import {
   Star,
 } from "lucide-react";
 
+function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
+}
+
+
 export default function Hero({ vehicle }) {
   const gallery = useMemo(() => {
     if (vehicle?.gallery?.length) {
@@ -810,7 +825,7 @@ export default function Hero({ vehicle }) {
                   Ex-showroom Price
                 </p>
 
-                <h2
+                {/* <h2
                   className="
                     mt-2
                     break-words
@@ -821,7 +836,23 @@ export default function Hero({ vehicle }) {
                   "
                 >
                   ₹ {(vehicle.exShowroomPrice / 100000).toFixed(2)} Lakh
-                </h2>
+                </h2> */}
+
+                <h2
+  className="
+    mt-2
+    break-words
+    text-3xl
+    font-extrabold
+    text-green-500
+    sm:text-4xl
+  "
+>
+  {formatPrice(
+    vehicle.startingPrice,
+    vehicle.endingPrice
+  )}
+</h2>
 
                 <p className="mt-3 text-sm leading-6 text-muted">
                   Final on-road price may vary depending on

@@ -347,10 +347,25 @@ export default function VehicleSidebar({
 }) {
   if (!vehicle) return null;
 
-  const formatPrice = (price) => {
-    if (!price) return "N/A";
-    return `₹ ${(price / 100000).toFixed(2)} Lakh`;
-  };
+  // const formatPrice = (price) => {
+  //   if (!price) return "N/A";
+  //   return `₹ ${(price / 100000).toFixed(2)} Lakh`;
+  // };
+
+  function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
+}
+
 
   const navItems = [
     {
@@ -410,11 +425,18 @@ export default function VehicleSidebar({
               className="text-green-500"
             />
 
-            <h2 className="text-3xl font-bold text-foreground">
+            {/* <h2 className="text-3xl font-bold text-foreground">
 
               {formatPrice(vehicle.exShowroomPrice)}
 
-            </h2>
+            </h2> */}
+
+            <h2 className="text-3xl font-bold text-foreground">
+  {formatPrice(
+    vehicle.startingPrice,
+    vehicle.endingPrice
+  )}
+</h2>
 
           </div>
 
@@ -755,11 +777,18 @@ export default function VehicleSidebar({
 
                     </h4>
 
-                    <p className="mt-1 text-sm text-muted">
+                    {/* <p className="mt-1 text-sm text-muted">
 
                       {formatPrice(car.exShowroomPrice)}
 
-                    </p>
+                    </p> */}
+
+                    <p className="mt-1 text-sm text-muted">
+  {formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+</p>
 
                   </div>
 

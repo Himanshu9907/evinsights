@@ -281,6 +281,21 @@ import {
   Scale,
 } from "lucide-react";
 
+function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
+}
+
+
 export default function FeaturedEVs({ cars }) {
   return (
     <section className="bg-background py-20">
@@ -390,11 +405,18 @@ export default function FeaturedEVs({ cars }) {
 
                 </h3>
 
-                <p className="mt-2 text-xl font-bold text-green-500">
+                {/* <p className="mt-2 text-xl font-bold text-green-500">
 
                   {car.exShowroomPrice}
 
-                </p>
+                </p> */}
+
+                <p className="mt-2 text-xl font-bold text-green-500">
+  {formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+</p>
 
                 {/* Quick Specs */}
 

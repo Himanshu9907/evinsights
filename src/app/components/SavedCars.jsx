@@ -242,9 +242,16 @@ export default function SavedCars() {
                   {car.name}
                 </h2>
 
-                <p className="mt-3 text-lg font-semibold">
+                {/* <p className="mt-3 text-lg font-semibold">
                   ₹ {(car.exShowroomPrice / 100000).toFixed(2)} Lakh
-                </p>
+                </p> */}
+
+                <p className="mt-3 text-lg font-semibold">
+  {formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+</p>
 
                 <div className="mt-6 flex gap-3">
 

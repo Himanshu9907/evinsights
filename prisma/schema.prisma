@@ -128,7 +128,9 @@ model EVModel {
   // Pricing
   //----------------------------------
 
-  exShowroomPrice    Int?
+
+  startingPrice Int?
+  endingPrice   Int?
 
   //----------------------------------
   // Battery

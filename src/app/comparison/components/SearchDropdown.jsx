@@ -19,6 +19,20 @@ export default function SearchDropdown({
   setSelectedCar,
   results,
 }) {
+
+  function formatPrice(startingPrice, endingPrice) {
+  if (!startingPrice) return "N/A";
+
+  const start = (startingPrice / 100000).toFixed(2);
+
+  if (!endingPrice || startingPrice === endingPrice) {
+    return `₹${start} Lakh`;
+  }
+
+  const end = (endingPrice / 100000).toFixed(2);
+
+  return `₹${start} - ${end} Lakh`;
+}
   const wrapperRef = useRef(null);
 
   const [open, setOpen] = useState(false);
@@ -263,12 +277,20 @@ export default function SearchDropdown({
 
                 <div className="mt-3 flex flex-wrap gap-3 text-xs text-muted">
 
-                  <span className="flex items-center gap-1">
+                  {/* <span className="flex items-center gap-1">
                     <IndianRupee size={14} />
                     {car.exShowroomPrice
                       ? `₹${(car.exShowroomPrice / 100000).toFixed(2)} L`
                       : "N/A"}
-                  </span>
+                  </span> */}
+
+                  <span className="flex items-center gap-1">
+  <IndianRupee size={14} />
+  {formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+</span>
 
                   <span className="flex items-center gap-1">
                     <BatteryCharging size={14} />
@@ -438,13 +460,20 @@ sm:w-28
 
                 <div className="mt-2 flex flex-wrap gap-2 text-sm text-muted">
 
-                  <span>
+                  {/* <span>
                     ₹
                     {selectedCar.exShowroomPrice
                       ? (selectedCar.exShowroomPrice / 100000).toFixed(2)
                       : "N/A"}{" "}
                     Lakh
-                  </span>
+                  </span> */}
+
+                  <span>
+  {formatPrice(
+    selectedCar.startingPrice,
+    selectedCar.endingPrice
+  )}
+</span>
 
                   <span>•</span>
 

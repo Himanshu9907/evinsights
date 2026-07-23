@@ -90,11 +90,18 @@ export default function SelectedCarCard({ car }) {
 
             </div>
 
-            <p className="mt-3 text-lg font-bold">
+            {/* <p className="mt-3 text-lg font-bold">
               {car.exShowroomPrice
                 ? `₹${(car.exShowroomPrice / 100000).toFixed(2)} Lakh`
                 : "N/A"}
-            </p>
+            </p> */}
+
+            <p className="mt-3 text-lg font-bold">
+  {formatPrice(
+    car.startingPrice,
+    car.endingPrice
+  )}
+</p>
 
           </div>
 

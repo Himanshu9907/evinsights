@@ -1,653 +1,3 @@
-// import { PrismaClient } from "@prisma/client";
-
-// import { brands } from "./seedData/brands.js";
-// import { vehicles } from "./seedData/vehicles.js";
-// import { categories } from "./seedData/categories.js";
-// import { users } from "./seedData/users.js";
-// import { articles } from "./seedData/articles.js";
-
-// const prisma = new PrismaClient();
-
-// async function main() {
-//   console.log("🌱 Starting database seed...\n");
-
-//   // ==========================================
-// // USERS
-// // ==========================================
-
-// // for (const user of users) {
-// //   await prisma.user.create({
-// //     data: user,
-// //   });
-// // }
-
-// for (const user of users) {
-//   await prisma.user.upsert({
-//     where: {
-//       email: user.email,
-//     },
-//     update: {},
-//     create: user,
-//   });
-// }
-
-// console.log("✅ Users Seeded");
-
-// // ==========================================
-// // CATEGORIES
-// // ==========================================
-
-// // for (const category of categories) {
-// //   await prisma.category.create({
-// //     data: category,
-// //   });
-// // }
-
-// for (const category of categories) {
-//   await prisma.category.upsert({
-//     where: {
-//       slug: category.slug,
-//     },
-//     update: {},
-//     create: category,
-//   });
-// }
-
-// console.log("✅ Categories Seeded");
-
-//   // ==========================================
-//   // BRANDS
-//   // ==========================================
-
-//   const brandMap = {};
-
-//   for (const brand of brands) {
-//     // const createdBrand = await prisma.eVBrand.create({
-//     //   data: {
-//     //     name: brand.name,
-//     //     slug: brand.slug,
-//     //     logo: brand.logo ?? null,
-//     //     country: brand.country ?? null,
-//     //   },
-//     // });
-//      const createdBrand = await prisma.eVBrand.upsert({
-//   where: {
-//     slug: brand.slug,
-//   },
-
-//   update: {
-//     name: brand.name,
-//     logo: brand.logo ?? null,
-//     country: brand.country ?? null,
-//   },
-
-//   create: {
-//     name: brand.name,
-//     slug: brand.slug,
-//     logo: brand.logo ?? null,
-//     country: brand.country ?? null,
-//   },
-// });
-
-//     brandMap[brand.name] = createdBrand.id;
-
-//     console.log(`✅ Brand : ${brand.name}`);
-//   }
-
-//   console.log("");
-
-//   // ==========================================
-//   // VEHICLES
-//   // ==========================================
-
-//  for (const vehicle of vehicles) {
-//   console.log(`🚗 Seeding ${vehicle.name}`);
-
-//   const model = await prisma.eVModel.upsert({
-//     where: {
-//       slug: vehicle.slug,
-//     },
-
-//     update: {
-//       //--------------------------------
-//       // Basic
-//       //--------------------------------
-
-//       name: vehicle.name,
-//       image: vehicle.image,
-//       overview: vehicle.overview,
-//       featured: vehicle.featured,
-
-//       //--------------------------------
-//       // Pricing
-//       //--------------------------------
-
-//       exShowroomPrice: vehicle.pricing.exShowroomPrice,
-
-//       //--------------------------------
-//       // Battery
-//       //--------------------------------
-
-//       batteryKwh: vehicle.battery.batteryKwh,
-//       batteryType: vehicle.battery.batteryType,
-//       claimedRange: vehicle.battery.claimedRange,
-//       realRange: vehicle.battery.realRange,
-
-//       //--------------------------------
-//       // Performance
-//       //--------------------------------
-
-//       powerHp: parseInt(vehicle.performance.maxPower),
-//       torqueNm: parseInt(vehicle.performance.maxTorque),
-//       topSpeed: vehicle.performance.topSpeed,
-//       acceleration: vehicle.performance.zeroToHundred,
-
-//       //--------------------------------
-//       // Dimensions
-//       //--------------------------------
-
-//       seating: vehicle.dimensions.seating,
-//       bodyType: vehicle.dimensions.bodyType,
-//       driveType: vehicle.dimensions.driveType,
-//       bootSpace: vehicle.dimensions.bootSpace,
-//       groundClearance: vehicle.dimensions.groundClearance,
-
-//       //--------------------------------
-//       // Charging
-//       //--------------------------------
-
-//       acCharging: vehicle.charging.homeChargingTime,
-//       dcCharging: vehicle.charging.dcChargingTime,
-//       chargingPort: vehicle.charging.chargingPort,
-
-//       //--------------------------------
-//       // Warranty
-//       //--------------------------------
-
-//       warranty: vehicle.warranty.vehicleWarranty,
-//       batteryWarranty: vehicle.warranty.batteryWarranty,
-//       launchDate: vehicle.warranty.launchDate,
-
-//       //--------------------------------
-
-//       brandId: brandMap[vehicle.brand],
-//     },
-
-//     create: {
-//       //--------------------------------
-//       // Basic
-//       //--------------------------------
-
-//       name: vehicle.name,
-//       slug: vehicle.slug,
-//       image: vehicle.image,
-//       overview: vehicle.overview,
-//       featured: vehicle.featured,
-
-//       //--------------------------------
-//       // Pricing
-//       //--------------------------------
-
-//       exShowroomPrice: vehicle.pricing.exShowroomPrice,
-
-//       //--------------------------------
-//       // Battery
-//       //--------------------------------
-
-//       batteryKwh: vehicle.battery.batteryKwh,
-//       batteryType: vehicle.battery.batteryType,
-//       claimedRange: vehicle.battery.claimedRange,
-//       realRange: vehicle.battery.realRange,
-
-//       //--------------------------------
-//       // Performance
-//       //--------------------------------
-
-//       powerHp: parseInt(vehicle.performance.maxPower),
-//       torqueNm: parseInt(vehicle.performance.maxTorque),
-//       topSpeed: vehicle.performance.topSpeed,
-//       acceleration: vehicle.performance.zeroToHundred,
-
-//       //--------------------------------
-//       // Dimensions
-//       //--------------------------------
-
-//       seating: vehicle.dimensions.seating,
-//       bodyType: vehicle.dimensions.bodyType,
-//       driveType: vehicle.dimensions.driveType,
-//       bootSpace: vehicle.dimensions.bootSpace,
-//       groundClearance: vehicle.dimensions.groundClearance,
-
-//       //--------------------------------
-//       // Charging
-//       //--------------------------------
-
-//       acCharging: vehicle.charging.homeChargingTime,
-//       dcCharging: vehicle.charging.dcChargingTime,
-//       chargingPort: vehicle.charging.chargingPort,
-
-//       //--------------------------------
-//       // Warranty
-//       //--------------------------------
-
-//       warranty: vehicle.warranty.vehicleWarranty,
-//       batteryWarranty: vehicle.warranty.batteryWarranty,
-//       launchDate: vehicle.warranty.launchDate,
-
-//       //--------------------------------
-
-//       brandId: brandMap[vehicle.brand],
-//     },
-//   });
-
-//   // ==========================================
-//   // SPECIFICATIONS
-//   // ==========================================
-
-//   if (vehicle.specs?.length) {
-//     await prisma.eVSpec.deleteMany({
-//       where: {
-//         modelId: model.id,
-//       },
-//     });
-
-//     await prisma.eVSpec.createMany({
-//       data: vehicle.specs.map((spec) => ({
-//         key: spec.key,
-//         value: spec.value,
-//         category: spec.category,
-//         modelId: model.id,
-//       })),
-//     });
-
-//     console.log("   ✓ Specifications");
-//   }
-//     // ==========================================
-//     // VARIANTS
-//     // ==========================================
-
-//    if (vehicle.variants?.length) {
-
-//   await prisma.eVVariant.deleteMany({
-//     where: {
-//       modelId: model.id,
-//     },
-//   });
-
-//   await prisma.eVVariant.createMany({
-//     data: vehicle.variants.map((variant) => ({
-//       name: variant.name,
-//       price: variant.price,
-//       battery: variant.battery,
-//       range: variant.range,
-//       power: variant.power,
-//       torque: variant.torque,
-//       topSpeed: variant.topSpeed,
-//       acceleration: variant.acceleration,
-//       recommended: variant.recommended,
-//       modelId: model.id,
-//     })),
-//   });
-
-//   console.log("   ✓ Variants");
-// }
-
-//     // ==========================================
-//     // FEATURES
-//     // ==========================================
-
-//    if (vehicle.features?.length) {
-
-//   await prisma.eVFeature.deleteMany({
-//     where: {
-//       modelId: model.id,
-//     },
-//   });
-
-//   await prisma.eVFeature.createMany({
-//         data: vehicle.features.map((feature) => ({
-//           title: feature.title,
-//           category: feature.category,
-//           modelId: model.id,
-//         })),
-//       });
-
-//       console.log("   ✓ Features");
-//     }
-
-//     // ==========================================
-//     // GALLERY
-//     // ==========================================
-
-//     if (vehicle.gallery?.length) {
-//       await prisma.eVGalleryImage.deleteMany({
-//   where: {
-//     modelId: model.id,
-//   },
-// });
-
-// await prisma.eVGalleryImage.createMany({
-//         data: vehicle.gallery.map((img) => ({
-//           image: img.image,
-//           caption: img.caption ?? null,
-//           isPrimary: img.isPrimary ?? false,
-//           modelId: model.id,
-//         })),
-//       });
-
-//       console.log("   ✓ Gallery");
-//     }
-
-//     // ==========================================
-//     // COLORS
-//     // ==========================================
-
-//     if (vehicle.colors?.length) {
-//       await prisma.eVColor.deleteMany({
-//   where: {
-//     modelId: model.id,
-//   },
-// });
-
-// await prisma.eVColor.createMany({
-//         data: vehicle.colors.map((color) => ({
-//           name: color.name,
-//           hexCode: color.hexCode,
-//           image: color.image ?? null,
-//           modelId: model.id,
-//         })),
-//       });
-
-//       console.log("   ✓ Colors");
-//     }
-
-//         // ==========================================
-//     // FAQ
-//     // ==========================================
-
-//     if (vehicle.faqs?.length) {
-
-//   await prisma.eVFAQ.deleteMany({
-//     where: {
-//       modelId: model.id,
-//     },
-//   });
-
-//   await prisma.eVFAQ.createMany({
-//     data: vehicle.faqs.map((faq, index) => ({
-//       question: faq.question,
-//       answer: faq.answer,
-//       order: faq.order ?? index + 1,
-//       modelId: model.id,
-//     })),
-//   });
-
-//   console.log("   ✓ FAQs");
-// }
-
-//     // ==========================================
-//     // PROS
-//     // ==========================================
-
-//    if (vehicle.pros?.length) {
-
-//   await prisma.eVPro.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVPro.createMany({
-//     data: vehicle.pros.map((pro,index)=>({
-//       title: pro.title,
-//       order:index+1,
-//       modelId:model.id,
-//     })),
-//   });
-
-//   console.log("   ✓ Pros");
-// }
-
-//     // ==========================================
-//     // CONS
-//     // ==========================================
-
-//     if (vehicle.cons?.length) {
-
-//   await prisma.eVCon.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVCon.createMany({
-//     data: vehicle.cons.map((con,index)=>({
-//       title:con.title,
-//       order:index+1,
-//       modelId:model.id,
-//     })),
-//   });
-
-//   console.log("   ✓ Cons");
-// }
-//     // ==========================================
-//     // SAFETY
-//     // ==========================================
-
-//     if (vehicle.safety) {
-//       await prisma.eVSafety.deleteMany({
-//   where: {
-//     modelId: model.id,
-//   },
-// });
-
-// await prisma.eVSafety.create({
-//         data: {
-//           ...vehicle.safety,
-//           modelId: model.id,
-//         },
-//       });
-
-//       console.log("   ✓ Safety");
-//     }
-
-//     // ==========================================
-//     // CHARGING
-//     // ==========================================
-
-//     if (vehicle.charging) {
-
-//   await prisma.eVCharging.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVCharging.create({
-//     data:{
-//       ...vehicle.charging,
-//       modelId:model.id,
-//     },
-//   });
-
-//   console.log("   ✓ Charging");
-// }
-
-//     // ==========================================
-//     // PERFORMANCE
-//     // ==========================================
-
-//     if (vehicle.performance) {
-
-//   await prisma.eVPerformance.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVPerformance.create({
-//     data:{
-//       zeroToHundred: vehicle.performance.zeroToHundred,
-//       motorType: vehicle.performance.motorType,
-//       maxPower: vehicle.performance.maxPower,
-//       maxTorque: vehicle.performance.maxTorque,
-//       driveModes: vehicle.performance.driveModes,
-//       regenLevels: vehicle.performance.regenLevels,
-//       modelId:model.id,
-//     },
-//   });
-
-//   console.log("   ✓ Performance");
-// }
-
-//     // ==========================================
-//     // OWNERSHIP
-//     // ==========================================
-
-//     if (vehicle.ownership) {
-
-//   await prisma.eVOwnership.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVOwnership.create({
-//     data:{
-//       ...vehicle.ownership,
-//       modelId:model.id,
-//     },
-//   });
-
-//   console.log("   ✓ Ownership");
-// }
-   
-//     // ==========================================
-//     // RATING
-//     // ==========================================
-
-//     if (vehicle.rating) {
-
-//   await prisma.eVRating.deleteMany({
-//     where:{
-//       modelId:model.id,
-//     },
-//   });
-
-//   await prisma.eVRating.create({
-//     data:{
-//       ...vehicle.rating,
-//       modelId:model.id,
-//     },
-//   });
-
-//   console.log("   ✓ Rating");
-// }
-
-// console.log(`✅ ${vehicle.name} Completed\n`);
-
-// } // 👈 YE vehicle loop close karega
-
-//  // ==========================================
-// // ARTICLES
-// // ==========================================
-
-// for (const article of articles) {
-
-//   const author = await prisma.user.findUnique({
-//     where: {
-//       email: article.author,
-//     },
-//   });
-
-
-//   const category = await prisma.category.findUnique({
-//     where: {
-//       slug: article.category,
-//     },
-//   });
-
-
-//   if (!author || !category) {
-//     console.log(
-//       `❌ Missing author/category for article: ${article.title}`
-//     );
-//     continue;
-//   }
-
-
-//   await prisma.article.upsert({
-
-//     where: {
-//       slug: article.slug,
-//     },
-
-
-//     update: {
-
-//       title: article.title,
-
-//       excerpt: article.excerpt,
-
-//       content: article.content,
-
-//       image: article.image,
-
-//       published: article.published,
-
-//       authorId: author.id,
-
-//       categoryId: category.id,
-
-//     },
-
-
-//     create: {
-
-//       title: article.title,
-
-//       slug: article.slug,
-
-//       excerpt: article.excerpt,
-
-//       content: article.content,
-
-//       image: article.image,
-
-//       published: article.published,
-
-//       authorId: author.id,
-
-//       categoryId: category.id,
-
-//     },
-
-//   });
-
-
-//   console.log(`📰 Article Seeded: ${article.title}`);
-
-// }
-
-
-// console.log("✅ Articles Seeded");
-
-//   console.log("🎉 Database Seed Completed Successfully!");
-// }
-
-
-
-// main()
-//   .catch((error) => {
-//     console.error("❌ Seed Error:");
-//     console.error(error);
-//     process.exit(1);
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect();
-//   });
-
-
 import { PrismaClient } from "@prisma/client";
 
 import { brands } from "./seedData/brands.js";
@@ -662,12 +12,23 @@ const prisma = new PrismaClient();
 // HELPERS
 //////////////////////////////////////////////////////
 
-function toInt(value) {
-  if (value === null || value === undefined) {
-    return null;
-  }
+// function toInt(value) {
+//   if (value === null || value === undefined) {
+//     return null;
+//   }
 
-  const number = Number.parseInt(value, 10);
+//   const number = Number.parseInt(value, 10);
+
+//   return Number.isNaN(number) ? null : number;
+// }
+
+function toInt(value) {
+  if (value == null) return null;
+
+  const number = parseInt(
+    String(value).replace(/[^\d]/g, ""),
+    10
+  );
 
   return Number.isNaN(number) ? null : number;
 }
@@ -679,11 +40,7 @@ function logSection(title) {
   console.log("==========================================");
 }
 
-async function replaceChildCollection({
-  model,
-  modelId,
-  data,
-}) {
+async function replaceChildCollection({ model, modelId, data }) {
   await model.deleteMany({
     where: {
       modelId,
@@ -699,11 +56,7 @@ async function replaceChildCollection({
   });
 }
 
-async function replaceChildRecord({
-  model,
-  modelId,
-  data,
-}) {
+async function replaceChildRecord({ model, modelId, data }) {
   await model.deleteMany({
     where: {
       modelId,
@@ -726,8 +79,7 @@ async function replaceChildRecord({
 async function main() {
   console.log("🌱 Starting Database Seed");
 
-
-    //////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////
   // USERS
   //////////////////////////////////////////////////////
 
@@ -814,169 +166,135 @@ async function main() {
 
   logSection("VEHICLES");
 
-  for (const vehicle of vehicles) {
+  const slugs = process.argv.slice(2);
 
+const vehiclesToSeed =
+  slugs.length === 0
+    ? vehicles
+    : vehicles.filter(vehicle =>
+        slugs.includes(vehicle.slug)
+      );
+
+  for (const vehicle of vehiclesToSeed) {
     console.log(`🚗 ${vehicle.name}`);
 
     if (!brandMap[vehicle.brand]) {
-      console.log(
-        `❌ Brand "${vehicle.brand}" not found`
-      );
+      console.log(`❌ Brand "${vehicle.brand}" not found`);
       continue;
     }
 
     const model = await prisma.eVModel.upsert({
-
       where: {
         slug: vehicle.slug,
       },
 
       update: {
-
         name: vehicle.name,
         image: vehicle.image,
         overview: vehicle.overview,
         featured: vehicle.featured,
 
-        exShowroomPrice:
-          vehicle.pricing.exShowroomPrice,
+        startingPrice: vehicle.pricing.startingPrice,
 
-        batteryKwh:
-          vehicle.battery.batteryKwh,
+        endingPrice: vehicle.pricing.endingPrice,
 
-        batteryType:
-          vehicle.battery.batteryType,
+        batteryKwh: vehicle.battery.batteryKwh,
 
-        claimedRange:
-          vehicle.battery.claimedRange,
+        batteryType: vehicle.battery.batteryType,
 
-        realRange:
-          vehicle.battery.realRange,
+        claimedRange: vehicle.battery.claimedRange,
 
-        powerHp:
-          toInt(vehicle.performance.maxPower),
+        realRange: vehicle.battery.realRange,
 
-        torqueNm:
-          toInt(vehicle.performance.maxTorque),
+        powerHp: toInt(vehicle.performance.maxPower),
 
-        topSpeed:
-          vehicle.performance.topSpeed,
+        torqueNm: toInt(vehicle.performance.maxTorque),
 
-        acceleration:
-          vehicle.performance.zeroToHundred,
+        topSpeed: vehicle.performance.topSpeed,
 
-        seating:
-          vehicle.dimensions.seating,
+        acceleration: vehicle.performance.zeroToHundred,
 
-        bodyType:
-          vehicle.dimensions.bodyType,
+        seating: vehicle.dimensions.seating,
 
-        driveType:
-          vehicle.dimensions.driveType,
+        bodyType: vehicle.dimensions.bodyType,
 
-        bootSpace:
-          vehicle.dimensions.bootSpace,
+        driveType: vehicle.dimensions.driveType,
 
-        groundClearance:
-          vehicle.dimensions.groundClearance,
+        bootSpace: vehicle.dimensions.bootSpace,
 
-        acCharging:
-          vehicle.charging.homeChargingTime,
+        groundClearance: vehicle.dimensions.groundClearance,
 
-        dcCharging:
-          vehicle.charging.dcChargingTime,
+        acCharging: vehicle.charging.homeChargingTime,
 
-        chargingPort:
-          vehicle.charging.chargingPort,
+        dcCharging: vehicle.charging.dcChargingTime,
 
-        warranty:
-          vehicle.warranty.vehicleWarranty,
+        chargingPort: vehicle.charging.chargingPort,
 
-        batteryWarranty:
-          vehicle.warranty.batteryWarranty,
+        warranty: vehicle.warranty.vehicleWarranty,
 
-        launchDate:
-          vehicle.warranty.launchDate,
+        batteryWarranty: vehicle.warranty.batteryWarranty,
 
-        brandId:
-          brandMap[vehicle.brand],
+        launchDate: vehicle.warranty.launchDate,
+
+        brandId: brandMap[vehicle.brand],
       },
 
       create: {
-
         name: vehicle.name,
         slug: vehicle.slug,
         image: vehicle.image,
         overview: vehicle.overview,
         featured: vehicle.featured,
 
-        exShowroomPrice:
-          vehicle.pricing.exShowroomPrice,
+        startingPrice: vehicle.pricing.startingPrice,
 
-        batteryKwh:
-          vehicle.battery.batteryKwh,
+        endingPrice: vehicle.pricing.endingPrice,
 
-        batteryType:
-          vehicle.battery.batteryType,
+        batteryKwh: vehicle.battery.batteryKwh,
 
-        claimedRange:
-          vehicle.battery.claimedRange,
+        batteryType: vehicle.battery.batteryType,
 
-        realRange:
-          vehicle.battery.realRange,
+        claimedRange: vehicle.battery.claimedRange,
 
-        powerHp:
-          toInt(vehicle.performance.maxPower),
+        realRange: vehicle.battery.realRange,
 
-        torqueNm:
-          toInt(vehicle.performance.maxTorque),
+        powerHp: toInt(vehicle.performance.maxPower),
 
-        topSpeed:
-          vehicle.performance.topSpeed,
+        torqueNm: toInt(vehicle.performance.maxTorque),
 
-        acceleration:
-          vehicle.performance.zeroToHundred,
+        topSpeed: vehicle.performance.topSpeed,
 
-        seating:
-          vehicle.dimensions.seating,
+        acceleration: vehicle.performance.zeroToHundred,
 
-        bodyType:
-          vehicle.dimensions.bodyType,
+        seating: vehicle.dimensions.seating,
 
-        driveType:
-          vehicle.dimensions.driveType,
+        bodyType: vehicle.dimensions.bodyType,
 
-        bootSpace:
-          vehicle.dimensions.bootSpace,
+        driveType: vehicle.dimensions.driveType,
 
-        groundClearance:
-          vehicle.dimensions.groundClearance,
+        bootSpace: vehicle.dimensions.bootSpace,
 
-        acCharging:
-          vehicle.charging.homeChargingTime,
+        groundClearance: vehicle.dimensions.groundClearance,
 
-        dcCharging:
-          vehicle.charging.dcChargingTime,
+        acCharging: vehicle.charging.homeChargingTime,
 
-        chargingPort:
-          vehicle.charging.chargingPort,
+        dcCharging: vehicle.charging.dcChargingTime,
 
-        warranty:
-          vehicle.warranty.vehicleWarranty,
+        chargingPort: vehicle.charging.chargingPort,
 
-        batteryWarranty:
-          vehicle.warranty.batteryWarranty,
+        warranty: vehicle.warranty.vehicleWarranty,
 
-        launchDate:
-          vehicle.warranty.launchDate,
+        batteryWarranty: vehicle.warranty.batteryWarranty,
 
-        brandId:
-          brandMap[vehicle.brand],
+        launchDate: vehicle.warranty.launchDate,
+
+        brandId: brandMap[vehicle.brand],
       },
 
+      
     });
 
-        //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
     // SPECIFICATIONS
     //////////////////////////////////////////////////////
 
@@ -1000,19 +318,48 @@ async function main() {
     await replaceChildCollection({
       model: prisma.eVVariant,
       modelId: model.id,
-      data: (vehicle.variants ?? []).map((variant) => ({
-        name: variant.name,
-        price: variant.price,
-        battery: variant.battery,
-        range: variant.range,
-        power: variant.power,
-        torque: variant.torque,
-        topSpeed: variant.topSpeed,
-        acceleration: variant.acceleration,
-        recommended: variant.recommended,
-        modelId: model.id,
-      })),
-    });
+    //   data: (vehicle.variants ?? []).map((variant) => ({
+    //     name: variant.name,
+    //     price: variant.price,
+    //     battery: variant.battery,
+    //     range: variant.range,
+    //     power: variant.power,
+    //     torque: variant.torque,
+    //     topSpeed: variant.topSpeed,
+    //     acceleration: variant.acceleration,
+    //     recommended: variant.recommended,
+    //     modelId: model.id,
+    //   })),
+    // });
+
+        data: (vehicle.variants ?? []).map((variant) => ({
+  name: variant.name,
+
+  price: toInt(variant.price),
+
+  battery: variant.battery,
+
+  range: toInt(variant.range),
+
+  power: toInt(variant.power),
+
+  torque: toInt(variant.torque),
+
+  topSpeed: toInt(variant.topSpeed),
+
+  acceleration:
+    variant.acceleration != null
+      ? parseFloat(String(variant.acceleration))
+      : null,
+
+  recommended: variant.recommended ?? false,
+
+  modelId: model.id,
+})),
+
+});
+
+
 
     console.log("   ✓ Variants");
 
@@ -1024,7 +371,7 @@ async function main() {
       model: prisma.eVFeature,
       modelId: model.id,
       data: (vehicle.features ?? []).map((feature) => ({
-        title: feature.title,
+       title: feature.title ?? feature.name,
         category: feature.category,
         modelId: model.id,
       })),
@@ -1066,7 +413,7 @@ async function main() {
 
     console.log("   ✓ Colors");
 
-        //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
     // FAQS
     //////////////////////////////////////////////////////
 
@@ -1091,7 +438,7 @@ async function main() {
       model: prisma.eVPro,
       modelId: model.id,
       data: (vehicle.pros ?? []).map((pro, index) => ({
-        title: pro.title,
+        title: pro.title ?? pro.text ?? pro,
         order: index + 1,
         modelId: model.id,
       })),
@@ -1107,7 +454,7 @@ async function main() {
       model: prisma.eVCon,
       modelId: model.id,
       data: (vehicle.cons ?? []).map((con, index) => ({
-        title: con.title,
+        title: con.title ?? con.text ?? con,
         order: index + 1,
         modelId: model.id,
       })),
@@ -1119,55 +466,125 @@ async function main() {
     // SAFETY
     //////////////////////////////////////////////////////
 
-    await replaceChildRecord({
-      model: prisma.eVSafety,
-      modelId: model.id,
-      data: vehicle.safety
-        ? {
-            ...vehicle.safety,
-            modelId: model.id,
-          }
-        : null,
-    });
+    // await replaceChildRecord({
+    //   model: prisma.eVSafety,
+    //   modelId: model.id,
+    //   data: vehicle.safety
+    //     ? {
+    //         ...vehicle.safety,
+    //         modelId: model.id,
+    //       }
+    //     : null,
+    // });
 
+
+    await replaceChildRecord({
+  model: prisma.eVSafety,
+  modelId: model.id,
+  data: vehicle.safety
+    ? {
+        airbags: vehicle.safety.airbags,
+        adasLevel: vehicle.safety.adasLevel,
+        ncapRating: vehicle.safety.ncapRating,
+        abs: vehicle.safety.abs,
+        ebd: vehicle.safety.ebd,
+        esc: vehicle.safety.esc,
+        tractionControl: vehicle.safety.tractionControl,
+        tpms: vehicle.safety.tpms,
+        hillHold: vehicle.safety.hillHold,
+        hillDescent: vehicle.safety.hillDescent,
+        isofix: vehicle.safety.isofix,
+        camera360: vehicle.safety.camera360,
+        blindSpotMonitor: vehicle.safety.blindSpotMonitor,
+        parkingSensors: vehicle.safety.parkingSensors,
+        emergencyBraking: vehicle.safety.emergencyBraking,
+        laneKeepAssist: vehicle.safety.laneKeepAssist,
+        adaptiveCruise: vehicle.safety.adaptiveCruise,
+        driverDrowsiness: vehicle.safety.driverDrowsiness,
+        modelId: model.id,
+      }
+    : null,
+});
     console.log("   ✓ Safety");
 
     //////////////////////////////////////////////////////
     // CHARGING
     //////////////////////////////////////////////////////
 
+    // await replaceChildRecord({
+    //   model: prisma.eVCharging,
+    //   modelId: model.id,
+    //   data: vehicle.charging
+    //     ? {
+    //         ...vehicle.charging,
+    //         modelId: model.id,
+    //       }
+    //     : null,
+    // });
+
     await replaceChildRecord({
-      model: prisma.eVCharging,
-      modelId: model.id,
-      data: vehicle.charging
-        ? {
-            ...vehicle.charging,
-            modelId: model.id,
-          }
-        : null,
-    });
+  model: prisma.eVCharging,
+  modelId: model.id,
+  data: vehicle.charging
+    ? {
+        homeChargerPower: vehicle.charging.homeChargerPower,
+        homeChargingTime: vehicle.charging.homeChargingTime,
+        dcFastChargePower: vehicle.charging.dcFastChargePower,
+        dcChargingTime: vehicle.charging.dcChargingTime,
+        chargingPort: vehicle.charging.chargingPort,
+        chargerIncluded: vehicle.charging.chargerIncluded,
+        portableCharger: vehicle.charging.portableCharger,
+        wallBoxCharger: vehicle.charging.wallBoxCharger,
+        v2l: vehicle.charging.v2l,
+        v2v: vehicle.charging.v2v,
+        batteryPreCondition: vehicle.charging.batteryPreCondition,
+        modelId: model.id,
+      }
+    : null,
+});
 
     console.log("   ✓ Charging");
 
-        //////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////
     // PERFORMANCE
     //////////////////////////////////////////////////////
 
-    await replaceChildRecord({
-      model: prisma.eVPerformance,
-      modelId: model.id,
-      data: vehicle.performance
-        ? {
-            zeroToHundred: vehicle.performance.zeroToHundred,
-            motorType: vehicle.performance.motorType,
-            maxPower: vehicle.performance.maxPower,
-            maxTorque: vehicle.performance.maxTorque,
-            driveModes: vehicle.performance.driveModes,
-            regenLevels: vehicle.performance.regenLevels,
-            modelId: model.id,
-          }
-        : null,
-    });
+    // await replaceChildRecord({
+    //   model: prisma.eVPerformance,
+    //   modelId: model.id,
+    //   data: vehicle.performance
+    //     ? {
+    //         zeroToHundred: vehicle.performance.zeroToHundred,
+    //         motorType: vehicle.performance.motorType,
+    //         maxPower: vehicle.performance.maxPower,
+    //         maxTorque: vehicle.performance.maxTorque,
+    //         driveModes: vehicle.performance.driveModes,
+    //         regenLevels: vehicle.performance.regenLevels,
+    //         modelId: model.id,
+    //       }
+    //     : null,
+    // });
+
+     await replaceChildRecord({
+  model: prisma.eVPerformance,
+  modelId: model.id,
+  data: vehicle.performance
+    ? {
+        zeroToHundred: vehicle.performance.zeroToHundred,
+        topSpeed: vehicle.performance.topSpeed,
+        powerToWeight: vehicle.performance.powerToWeight,
+        driveModes: vehicle.performance.driveModes,
+        regenLevels: vehicle.performance.regenLevels,
+        suspensionFront: vehicle.performance.suspensionFront,
+        suspensionRear: vehicle.performance.suspensionRear,
+        turningRadius: vehicle.performance.turningRadius,
+        motorType: vehicle.performance.motorType,
+        maxPower: vehicle.performance.maxPower,
+        maxTorque: vehicle.performance.maxTorque,
+        modelId: model.id,
+      }
+    : null,
+});
 
     console.log("   ✓ Performance");
 
@@ -1175,16 +592,35 @@ async function main() {
     // OWNERSHIP
     //////////////////////////////////////////////////////
 
+    // await replaceChildRecord({
+    //   model: prisma.eVOwnership,
+    //   modelId: model.id,
+    //   data: vehicle.ownership
+    //     ? {
+    //         ...vehicle.ownership,
+    //         modelId: model.id,
+    //       }
+    //     : null,
+    // });
+
     await replaceChildRecord({
-      model: prisma.eVOwnership,
-      modelId: model.id,
-      data: vehicle.ownership
-        ? {
-            ...vehicle.ownership,
-            modelId: model.id,
-          }
-        : null,
-    });
+  model: prisma.eVOwnership,
+  modelId: model.id,
+  data: vehicle.ownership
+    ? {
+        serviceInterval: vehicle.ownership.serviceInterval,
+        yearlyServiceCost: vehicle.ownership.yearlyServiceCost,
+        insuranceCost: vehicle.ownership.insuranceCost,
+        batteryReplacementCost: vehicle.ownership.batteryReplacementCost,
+        roadsideAssistance: vehicle.ownership.roadsideAssistance,
+        warrantyYears: vehicle.ownership.warrantyYears,
+        warrantyKm: vehicle.ownership.warrantyKm,
+        resaleRating: vehicle.ownership.resaleRating,
+        maintenanceRating: vehicle.ownership.maintenanceRating,
+        modelId: model.id,
+      }
+    : null,
+});
 
     console.log("   ✓ Ownership");
 
@@ -1192,16 +628,34 @@ async function main() {
     // RATING
     //////////////////////////////////////////////////////
 
+    // await replaceChildRecord({
+    //   model: prisma.eVRating,
+    //   modelId: model.id,
+    //   data: vehicle.rating
+    //     ? {
+    //         ...vehicle.rating,
+    //         modelId: model.id,
+    //       }
+    //     : null,
+    // });
+
     await replaceChildRecord({
-      model: prisma.eVRating,
-      modelId: model.id,
-      data: vehicle.rating
-        ? {
-            ...vehicle.rating,
-            modelId: model.id,
-          }
-        : null,
-    });
+  model: prisma.eVRating,
+  modelId: model.id,
+  data: vehicle.rating
+    ? {
+        overall: vehicle.rating.overall,
+        safety: vehicle.rating.safety,
+        performance: vehicle.rating.performance,
+        comfort: vehicle.rating.comfort,
+        features: vehicle.rating.features,
+        valueForMoney: vehicle.rating.valueForMoney,
+        charging: vehicle.rating.charging,
+        verdict: vehicle.rating.verdict,
+        modelId: model.id,
+      }
+    : null,
+});
 
     console.log("   ✓ Rating");
 
@@ -1215,7 +669,6 @@ async function main() {
 
   logSection("ARTICLES");
   for (const article of articles) {
-
     const author = await prisma.user.findUnique({
       where: {
         email: article.author,
@@ -1223,9 +676,7 @@ async function main() {
     });
 
     if (!author) {
-      console.log(
-        `❌ Author not found for article: ${article.title}`
-      );
+      console.log(`❌ Author not found for article: ${article.title}`);
       continue;
     }
 
@@ -1236,20 +687,16 @@ async function main() {
     });
 
     if (!category) {
-      console.log(
-        `❌ Category not found for article: ${article.title}`
-      );
+      console.log(`❌ Category not found for article: ${article.title}`);
       continue;
     }
 
     await prisma.article.upsert({
-
       where: {
         slug: article.slug,
       },
 
       update: {
-
         title: article.title,
         excerpt: article.excerpt,
         content: article.content,
@@ -1259,14 +706,12 @@ async function main() {
         authorId: author.id,
         categoryId: category.id,
         pros: article.pros ?? [],
-cons: article.cons ?? [],
-keyPoints: article.keyPoints ?? [],
-faqs: article.faqs ?? null,
-
+        cons: article.cons ?? [],
+        keyPoints: article.keyPoints ?? [],
+        faqs: article.faqs ?? null,
       },
 
       create: {
-
         title: article.title,
         slug: article.slug,
         excerpt: article.excerpt,
@@ -1277,16 +722,13 @@ faqs: article.faqs ?? null,
         authorId: author.id,
         categoryId: category.id,
         pros: article.pros ?? [],
-cons: article.cons ?? [],
-keyPoints: article.keyPoints ?? [],
-faqs: article.faqs ?? null,
-
+        cons: article.cons ?? [],
+        keyPoints: article.keyPoints ?? [],
+        faqs: article.faqs ?? null,
       },
-
     });
 
     console.log(`📰 ${article.title}`);
-
   }
 
   console.log("");

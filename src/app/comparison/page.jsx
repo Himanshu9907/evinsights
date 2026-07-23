@@ -141,41 +141,91 @@ export default async function ComparisonHomePage({
 
   const car1Slug = params?.car1 ?? "";
 
+  // const cars = await prisma.eVModel.findMany({
+  //   select: {
+  //     id: true,
+  //     name: true,
+  //     slug: true,
+  //     image: true,
+  //     brand: {
+  //       select: {
+  //         name: true,
+  //       },
+  //     },
+  //   },
+  //   orderBy: {
+  //     name: "asc",
+  //   },
+  // });
+
+  // const selectedCar1 = car1Slug
+  //   ? await prisma.eVModel.findUnique({
+  //       where: {
+  //         slug: car1Slug,
+  //       },
+  //       select: {
+  //         id: true,
+  //         name: true,
+  //         slug: true,
+  //         image: true,
+  //         brand: {
+  //           select: {
+  //             name: true,
+  //           },
+  //         },
+  //       },
+  //     })
+  //   : null;
+
   const cars = await prisma.eVModel.findMany({
-    select: {
-      id: true,
-      name: true,
-      slug: true,
-      image: true,
-      brand: {
-        select: {
-          name: true,
-        },
+  select: {
+    id: true,
+    name: true,
+    slug: true,
+    image: true,
+
+    startingPrice: true,
+    endingPrice: true,
+
+    batteryKwh: true,
+    claimedRange: true,
+
+    brand: {
+      select: {
+        name: true,
       },
     },
-    orderBy: {
-      name: "asc",
-    },
-  });
+  },
+  orderBy: {
+    name: "asc",
+  },
+});
 
-  const selectedCar1 = car1Slug
-    ? await prisma.eVModel.findUnique({
-        where: {
-          slug: car1Slug,
-        },
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          image: true,
-          brand: {
-            select: {
-              name: true,
-            },
+const selectedCar1 = car1Slug
+  ? await prisma.eVModel.findUnique({
+      where: {
+        slug: car1Slug,
+      },
+      select: {
+        id: true,
+        name: true,
+        slug: true,
+        image: true,
+
+        startingPrice: true,
+        endingPrice: true,
+
+        batteryKwh: true,
+        claimedRange: true,
+
+        brand: {
+          select: {
+            name: true,
           },
         },
-      })
-    : null;
+      },
+    })
+  : null;
 
   return (
     <main className="min-h-screen bg-background text-foreground">

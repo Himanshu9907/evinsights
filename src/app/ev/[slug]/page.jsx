@@ -266,22 +266,42 @@ export default async function EVDetailPage({ params }) {
 
  
 
+  // const similarEVs = await prisma.eVModel.findMany({
+  //   where: {
+  //     brandId: vehicle.brandId,
+  //     NOT: {
+  //       slug: vehicle.slug,
+  //     },
+  //   },
+  //   select: {
+  //     name: true,
+  //     slug: true,
+  //     image: true,
+  //     exShowroomPrice: true,
+  //     claimedRange: true,
+  //   },
+  //   take: 3,
+  // });
+
   const similarEVs = await prisma.eVModel.findMany({
-    where: {
-      brandId: vehicle.brandId,
-      NOT: {
-        slug: vehicle.slug,
-      },
+  where: {
+    brandId: vehicle.brandId,
+    NOT: {
+      slug: vehicle.slug,
     },
-    select: {
-      name: true,
-      slug: true,
-      image: true,
-      exShowroomPrice: true,
-      claimedRange: true,
-    },
-    take: 3,
-  });
+  },
+  select: {
+    name: true,
+    slug: true,
+    image: true,
+
+    startingPrice: true,
+    endingPrice: true,
+
+    claimedRange: true,
+  },
+  take: 3,
+});
 
   return (
     <main className="min-h-screen bg-background text-foreground transition-colors duration-300">

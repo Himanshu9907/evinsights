@@ -162,7 +162,7 @@ export default function SearchDropdown({
                     {car.brand?.name}
                   </p>
 
-                  <p
+                  {/* <p
                     className="
                       mt-2
                       text-sm
@@ -178,7 +178,28 @@ export default function SearchDropdown({
                         ).toFixed(2)
                       : "--"}{" "}
                     Lakh
-                  </p>
+                  </p> */}
+
+                  <p
+  className="
+    mt-2
+    text-sm
+    font-semibold
+    text-green-500
+  "
+>
+  {car.startingPrice ? (
+    <>
+      ₹
+      {(car.startingPrice / 100000).toFixed(2)}
+      {car.endingPrice &&
+        ` - ${(car.endingPrice / 100000).toFixed(2)}`}
+      {" "}Lakh
+    </>
+  ) : (
+    "--"
+  )}
+</p>
 
                 </div>
 

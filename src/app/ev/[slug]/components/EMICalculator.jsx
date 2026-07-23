@@ -187,8 +187,11 @@
 import { useMemo, useState } from "react";
 import { Calculator } from "lucide-react";
 
+// export default function EMICalculator({ vehicle }) {
+//   const price = vehicle.exShowroomPrice || 0;
+
 export default function EMICalculator({ vehicle }) {
-  const price = vehicle.exShowroomPrice || 0;
+  const price = vehicle.startingPrice || 0;
 
   const [downPayment, setDownPayment] = useState(
     Math.round(price * 0.2)
