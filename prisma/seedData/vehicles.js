@@ -2792,7 +2792,7 @@ export const vehicles = [
 
   featured: true,
 
-  image: "/cars/tata/nexon-ev/main.webp",
+  image: "https://res.cloudinary.com/ngpxbgpo/image/upload/v1784835748/image9_tjhmz3.png",
 
   overview:
     "The Tata Nexon.ev is a compact electric SUV built on Tata's EV architecture. It offers a certified range of up to 489 km (45 kWh), advanced connected technology, ADAS, V2L & V2V charging, panoramic sunroof, JBL cinematic sound system and Lifetime Warranty on the HV Battery Pack for the first registered owner.",
